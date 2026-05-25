@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conference Recap · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27061</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">aa81f686-297f-4a19-8225-fe3db03fc3b2</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27061, SXXKV5UFM55W-1413989332-27061</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <h1>CNU 34 — Conference Recap</h1>
+  <p style="font-size:15px;color:var(--ink-l);margin-bottom:6px;">Five days. Twenty-six sessions. Kyle Smith, Angela Belford, and Julie Vaught attending across the full program. This is the synthesis — what's worth acting on, what's worth arguing about, and what LP can file away as confirmed.</p>
+  <p style="font-size:13px;color:var(--ink-f);">Each section expands from summary to full detail. Full transcript-based session notes are in the archive.</p>
+
+  <!-- NAVIGATION -->
+  <div class="section" style="margin-top:36px;">
+    <div class="section-label">Sections</div>
+    <div class="nav-grid">
+      <a class="nav-card" href="CNU34-Business-Case.html">
+        <div class="nav-card-num">01 · The Money</div>
+        <div class="nav-card-title">The Financial Case</div>
+        <div class="nav-card-desc">Place value, deal structure, retail science, construction cost cliffs, NWA demographics</div>
+      </a>
+      <a class="nav-card" href="CNU34-Design-Science.html">
+        <div class="nav-card-num">02 · How It Works</div>
+        <div class="nav-card-title">Streets, Buildings & Safety</div>
+        <div class="nav-card-desc">Walkability mechanics, building types, single-stair data, fire safety, intersection density</div>
+      </a>
+      <a class="nav-card" href="CNU34-Community.html">
+        <div class="nav-card-num">03 · Community</div>
+        <div class="nav-card-title">Community as Product</div>
+        <div class="nav-card-desc">Governance, social infrastructure, pattern writing, the software of community</div>
+      </a>
+      <a class="nav-card" href="CNU34-Ideas.html">
+        <div class="nav-card-num">04 · Frameworks</div>
+        <div class="nav-card-title">Ideas Worth Carrying Forward</div>
+        <div class="nav-card-desc">Conceptual lenses — not tasks, not metrics, but ways of thinking that should stay in the room</div>
+      </a>
+      <a class="nav-card" href="CNU34-Checklist.html">
+        <div class="nav-card-num">05 · Trillium</div>
+        <div class="nav-card-title">Trillium Checklist</div>
+        <div class="nav-card-desc">Design · Governance · Finance · Infrastructure · Community · Relationships — by urgency</div>
+      </a>
+      <a class="nav-card" href="CNU34-Questions.html">
+        <div class="nav-card-num">06 · Decisions</div>
+        <div class="nav-card-title">Open Questions</div>
+        <div class="nav-card-desc">What LP needs to decide — organized by urgency, not by session</div>
+      </a>
+      <a class="nav-card" href="CNU34-Sessions.html">
+        <div class="nav-card-num">07 · Archive</div>
+        <div class="nav-card-title">Session Notes by Day</div>
+        <div class="nav-card-desc">Full transcript-based notes for all 26 sessions, organized chronologically</div>
+      </a>
+      <a class="nav-card" href="CNU34-Glossary.html">
+        <div class="nav-card-num">08 · Reference</div>
+        <div class="nav-card-title">Glossary &amp; Reading List</div>
+        <div class="nav-card-desc">Key terms, books, reports, tools, and contacts from the conference</div>
+      </a>
+      <a class="nav-card" href="ST-Gathering.html" style="border-top:3px solid var(--amber);">
+        <div class="nav-card-num" style="color:var(--amber);">Bonus · Strong Towns</div>
+        <div class="nav-card-title">Strong Towns National Gathering</div>
+        <div class="nav-card-desc">Fayetteville · May 19–20, 2026 · The municipal finance argument for Trillium — and what it means for Cave Springs long-term</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- TEN FINDINGS -->
+  <div class="section">
+    <div class="section-label">The Short Version</div>
+    <h2>Ten Things Worth Knowing</h2>
+    <p style="font-size:14px;color:var(--ink-f);margin-bottom:20px;">If you read nothing else, read this.</p>
+
+    <div class="finding">
+      <div class="finding-num">1</div>
+      <div class="finding-body"><strong>The financial case for walkable urbanism is now empirical.</strong> Norton Commons prices rose from $135/sqft in 2005 to $234 in 2019 and held 17% above comparables during COVID. Raj Chetty's Harvard research shows children who grow up in walkable new urban neighborhoods earn 20% more as adults. The philosophical argument is over. The data argument is available.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">2</div>
+      <div class="finding-body"><strong>Deal structure is as important as design.</strong> Norton Commons survived 2008 without bank debt — "giants among pygmies." Equity over leverage, land-bought-as-sold, builders carrying their own financing: these structural choices matter as much as the site plan.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">3</div>
+      <div class="finding-body"><strong>Phase 1 is the whole argument.</strong> The test: if Phase 1 was all that ever got built, would it feel like a place? A complete slice through all product types — not the easiest products in the easiest corner. Phase 1 isn't a development phase. It's the proof of concept.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">4</div>
+      <div class="finding-body"><strong>Every successful village center started one-story.</strong> Rosemary Beach demolished its last one-story building two years ago. Andres Duany called multi-story mixed-use masonry in Phase 1 "trying to give birth to a teenager." Design the infant. Plan for the adult.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">5</div>
+      <div class="finding-body"><strong>The town architect has to be in place before the first builder arrives.</strong> Not after. The Lakeland comparison is specific: same quality master plan as Kentlands, no town architect, dramatically inferior result twenty years later. Vinyl everything. Enclosure that doesn't enclose.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">6</div>
+      <div class="finding-body"><strong>Good design is necessary but not sufficient.</strong> Third Street Cottages had the right physical patterns and still needed a governance rebuild when buyers who came for the aesthetic got on the HOA board. The community agreements, governance structure, and founding vision document require as much intentionality as the hardware.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">7</div>
+      <div class="finding-body"><strong>New apartments are 6× safer than new single-family homes.</strong> Single-stair buildings in NYC and Seattle have had zero egress-related fire deaths across 12 years of study. The 20-foot street rule dates to 1915 fire underwriters calculating clearance for two horse-drawn carriages. It's a convention, not a safety finding.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">8</div>
+      <div class="finding-body"><strong>NWA's 62% one-and-two-person household rate validates Trillium's product mix.</strong> It's basic market math, not a social mission. The demand for smaller homes, cottage lots, and missing middle product is higher here than in most comparable markets.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">9</div>
+      <div class="finding-body"><strong>The planning/fire relationship can be a design asset.</strong> Fayetteville's city planner and fire planning chief built a productive working relationship in two years — monthly meetings, joint city council advocacy, no crisis required. When fire officials show up at city council supporting a rezoning, the political dynamic changes completely. Cave Springs is 20 minutes away.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">10</div>
+      <div class="finding-body"><strong>The risk of default to conventional development in NWA is real.</strong> The regional data shows 41% of NWA city land is still undeveloped. The choices made about that land in the next decade will compound for a century. Trillium Village is the most visible private-sector counterexample to the conventional path.</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-label">About This Guide</div>
+    <h2>Source Material</h2>
+    <p>Synthesized from 26 recorded sessions at CNU 34 (Bentonville/Fayetteville, May 12–15, 2026). Recordings are in the LP Otter.ai account. Individual session notes — drawn directly from transcripts — are in the <a href="CNU34-Sessions.html">Session Archive</a>.</p>
+    <p>The guide is organized thematically rather than by day because the same ideas surfaced across multiple sessions, and the connections between them are more useful than the sequence. Where a session is the primary source for a claim, it's cited by session code (e.g., D1·S2 = Day 1, Session 2).</p>
+    <p>A few speakers appear frequently enough that first-name references are used: <strong>David Johnston</strong> (Norton Commons, Louisville); <strong>Bob Fields</strong> (retail planning); <strong>Jeff Speck</strong> (urban designer, <em>Walkable City</em>); <strong>Eric Klinenberg</strong> (NYU, <em>Palaces for the People</em>); <strong>Andres Duany</strong> (DPZ, CNU co-founder). Full attributions in session notes.</p>
+  </div>
+
+<div class="footer">
+  <span>Leadership Properties · CNU 34</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

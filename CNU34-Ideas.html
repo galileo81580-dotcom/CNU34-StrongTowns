@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideas Worth Carrying Forward · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27056</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">92fde4f3-f197-4f23-a716-dae34f844265</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27056, SXXKV5UFM55W-1413989332-27056</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Section 04</div>
+  <h1>Ideas Worth Carrying Forward</h1>
+  <p>Not tasks. Not metrics. These are frameworks that should change how the team thinks about Trillium — lenses worth keeping in the room when design decisions, marketing decisions, and governance decisions get made.</p>
+
+  <div class="section">
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Good design is the hardware — governance, agreements, and culture are the software that determines what actually happens</div>
+          <div class="summary-sub">Ross Chapin (D4·S1); Duany panel (D3·S4); Town Architect sessions (D3·S3)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The hardware of community is the physical design — the streets, the courtyards, the building types, the porch geometry, the shared commons. The software is the governance structure, the community agreements, the traditions, the people who do the labor of culture-building. Both are necessary. Neither is sufficient.</p>
+        <p>The failure mode that Third Street Cottages illustrated, and that the Lessons of Failure panel confirmed repeatedly: developers invest heavily in the hardware and assume the software will emerge. It doesn't reliably. The HOA structure, the community charter, the founding document, the host role, the first tradition — these have to be as intentionally designed as the site plan. They just don't show up in the renderings.</p>
+        <p>The useful question to ask when reviewing any Trillium decision: is this hardware or software? If it's hardware, is the corresponding software designed? If it's software, is the hardware set up to support it?</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">The everyday encounter at the coffee shop is how economic opportunity travels across social groups</div>
+          <div class="summary-sub">Raj Chetty (D2·CK); Carol Kyle (D3·S2); Eric Klinenberg (D4·CK)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Three independent research programs at CNU arrived at the same mechanism: weak ties — low-stakes, repeated encounters with people you don't know well — are how trust travels, how opportunity circulates, and how cross-class friendship forms. Chetty measured them through Facebook data. Klinenberg traced them through the 1995 Chicago heat wave. Carol Kyle built a fellowship around creating conditions for them in public spaces.</p>
+        <p>The implication for Trillium isn't philosophical — it's spatial. The frequency of meaningful casual encounter between residents is a design output, not a hoped-for social outcome. A street that generates two such encounters per week per resident is performing better than one that generates zero, regardless of how the facades look. LP should be able to estimate this for any given street section or courtyard configuration.</p>
+        <p>This is also why "amenities" framing is a strategic mistake. An amenity implies a feature that some residents use. Weak tie infrastructure is something that happens to everyone incidentally — at the coffee shop, on the trail, at the farmers market — whether or not they're thinking about community. Design for the incidental encounter, not the programmed event.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Control Is the Product, Not a Preference</div>
+          <div class="summary-sub">Norton Commons (D1·S2); Town Architect sessions (D3·S3); Lessons of Failure (D3·S4)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Every practitioner who built something durable at CNU maintained explicit, operational control over what got built and in what sequence. Norton Commons never sold lots to individual homeowners — only to vetted builders in small batches. The Seabrook lease-back maintained merchandising rights in every retail lease. The town architect reviewed every plan before permits were filed. The builder workshop model showed builders how to execute requirements rather than just enforcing them after the fact.</p>
+        <p>Control isn't about aesthetics. It's about sequence, pace, quality, and narrative. A community that looks like it grew organically usually had careful control at every decision point that prevented it from drifting. The drift happens in the gaps — the lot that gets sold to an individual builder who does something inconsistent, the retail tenant who converts their space without review, the HOA that lowers the maintenance standard because assessments are unpopular.</p>
+        <p>For LP: the specific mechanisms of control need to be designed before they're needed. Who reviews what, at what stage, with what authority to say no — and what happens if that person is no longer available.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">If You're Marketing Amenities, You're Not Building a Neighborhood</div>
+          <div class="summary-sub">Architecture session (D1·S6); multiple sessions</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Said directly in the architecture session, confirmed by every other session that touched on community: the amphitheater, the trail, the retail, the fitness center — these are for the community, not for sales. Communities that led with elaborate gates and amenity packages were the ones that collapsed in 2008 or that feel hollow once the novelty wears off. Communities that led with place — that were genuinely somewhere worth being — survived and appreciated.</p>
+        <p>The test for any LP marketing piece or sales conversation: does it lead with place or with features? Describing what Trillium Village <em>is</em> — the kind of life that's possible there, the kind of neighbors someone will have — is different from listing the amenities included. The latter is a product catalog. The former is a community invitation.</p>
+        <p>This isn't a rhetorical point. The sales conversation shapes who buys, and who buys shapes what the community becomes when second-generation buyers arrive. If LP sells Trillium as a collection of features, it will attract buyers who chose it for the features. If LP sells Trillium as a community, it will attract buyers who chose it for the community.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Every Infrastructure Decision Is Also a Social Infrastructure Decision</div>
+          <div class="summary-sub">Eric Klinenberg (D4·CK); Fire Safety Workshop (D3·S8)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Copenhagen's flood retention infrastructure is a public park. Hoboken's stormwater management is a neighborhood gathering space. The infrastructure is invisible until a rain event; in the meantime it's a basketball court, a dog park, a place for kids. This is the sponge city principle applied: the question for any infrastructure investment isn't "what is its primary function?" but "how many functions can it serve simultaneously?"</p>
+        <p>For Trillium: the retention pond required by entitlement conditions is a stormwater element. It's also a potential social space, a walking amenity, a visual anchor, and a piece of the trail network — if designed with all those functions in mind from the beginning. Designing it as drainage and then trying to add social function later is both more expensive and less effective. The same principle applies to the street trees (social infrastructure + walkability + home value + stormwater), the trail network (connectivity + community + tourism), and the village center parking (commerce + social gathering + civic space).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Building with economy of means produces better urbanism than building at economy of scale</div>
+          <div class="summary-sub">Building Better panel (D1·S9); Lessons of Failure (D3·S4)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Economy of means is not economy of scale and it's not cost-cutting. It's building the right amount of building with the right materials in the right relationships — the way traditional architecture was built before the Thermostat Age. The small traditional house is the size it is because that's what the lumber store sold: 16-foot maximum board length, 8-foot cheap boards, dimensions dictated by available materials. The result was housing that fit human life and human budgets.</p>
+        <p>Seaside is more vital than Celebration despite Celebration's far greater resources, in part because Seaside was built with low capital inputs and loose guidelines that produced genuine variety. Celebration's tightly controlled, Disney-funded approach produced more architectural consistency and less life. Economy of means produces ferment; economy of scale produces product.</p>
+        <p>The practical application for Trillium's builder standards: don't specify expensive materials, specify good relationships. Wood on the ceiling instead of the floor produces the same warmth at a fraction of the maintenance cost (a Thaden School example). Low-grade plywood with a good finish produces the character of wood without the cost of select-grade lumber. The question for any specification is: what produces the desired character, not what material achieves it most directly.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Not Every House Has to Do Everything</div>
+          <div class="summary-sub">Town Architect Q&A (D3·S3); point access block sidebar</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>A community that accommodates aging doesn't need every home to be universally designed. It needs enough product diversity that residents who want single-floor living have an appropriate option within the community — so they can stay in Trillium rather than leaving it when their life stage changes. Kentlands didn't design every home for aging; it designed a range of product types. Several residents described moving from a larger family home to a townhouse or a rental apartment as their household size shrank, staying in the community they'd been part of for decades.</p>
+        <p>This principle extends beyond aging. Not every building needs to be architecturally expressive (the 80/20 rule). Not every public space needs programming. Not every amenity needs to be universally accessible in the same way. A community where every building does everything — universally accessible, architecturally diverse, mixed-use, sustainably built, at every price point — produces none of those things well. Let some buildings do specific things excellently.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Simple codes that specify outcomes produce better results than complex codes that specify methods</div>
+          <div class="summary-sub">Lessons of Failure (D3·S4); Town Architect (D3·S3); Pattern Writing (D3·S5)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The old New Urbanism produced elaborate design codes with detailed specifications for every architectural element, every proportion, every material. Andres Duany's closing at the Lessons of Failure panel: "The old New Urbanism is dead." Over-specified codes intimidate builders who think they can't meet the standard, produce the criticism culture that keeps smaller developers out, and still fail when the builder meets the letter but not the spirit.</p>
+        <p>The Commissioner's Plan for Manhattan in 1811 specified streets and plunge requirements — that's it. Thomas Jefferson's coach for Washington DC: "Buildings shall move up to the street and rise up three stories." One sentence. What followed was the most urbanistically productive period in American history.</p>
+        <p>Pattern writing is the practical alternative: specify the intention and the spatial outcome, not the method. A code that says "the building should provide enclosure for the street at the sidewalk line, with active use or fenestration at ground level" is harder to game than a code that specifies window proportions and material types. The intention is clear; the execution has room for genuine variety.</p>
+      </div>
+    </details>
+
+  </div>
+
+<div class="footer">
+  <span>LP · CNU 34 · Section 04</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

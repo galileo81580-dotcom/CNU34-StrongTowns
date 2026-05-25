@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary & Reading List · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27054</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">2f16074d-d260-49a7-962d-9ad4be0952c3</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27054, SXXKV5UFM55W-1413989332-27054</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Section 08</div>
+  <h1>Glossary &amp; Reading List</h1>
+
+  <!-- GLOSSARY -->
+  <div class="section">
+    <h2>Glossary</h2>
+    <p style="font-size:14px;color:var(--ink-f);margin-bottom:20px;">Key terms used throughout the conference and these notes. Defined for team members who weren't at the conference.</p>
+
+    <details open>
+      <summary><div><div class="summary-title">Architecture &amp; Building Types</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:200px 1fr;gap:0;">
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">3M Building</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Mixed-use, Multi-story, Masonry. Shorthand for the dense urban building type that requires IBC (International Building Code) rather than IRC (International Residential Code). Significantly more expensive to build. Andres Duany's term for the "teenager" you shouldn't try to give birth to in Phase 1.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">80/20 Rule</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The principle that 80% of buildings in a healthy neighborhood should be simple, good background fabric — providing enclosure and frontage without competing for attention. 20% get architectural expression, placed at corners, civic sites, and key moments. When everything competes at the same volume, civic legibility collapses.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">IBC vs. IRC</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">International Building Code vs. International Residential Code. IRC governs residential construction up to 3 stories — simpler fire protection, wood frame, lower cost (~$230/sf). IBC governs everything larger — more complex requirements, approximately $300-450/sf depending on building type. The transition between them is the "code cliff" that makes 4-story buildings substantially more expensive than 3-story buildings.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Point Access Block</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Also called a single-stair building or access block. An apartment building organized around a single central vertical core (elevator + stair), with units surrounding it on all sides rather than along a double-loaded corridor. Standard in most of the world; limited to 3 stories in most US jurisdictions. 6–13% cheaper to build, 94% net-to-gross efficiency, all units within 20 feet of the stair.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Missing Middle</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The range of housing types between single-family detached homes and large apartment complexes — duplexes, triplexes, courtyard apartments, cottage clusters, townhouses, small apartment buildings. Largely absent from post-WWII American development. NWA's 62% one-and-two-person household rate represents demand for exactly these types.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Single-Crew Workplace</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Steve Mouzon's term for a business small enough to be run by one person or one small team — a grocer in 400 sqft, a restaurant in 300 sqft, a barber in 200 sqft. These can be viable from day one with very few customers, making them the right vehicle for activating a village center before the surrounding neighborhood is built out. Described at originalgreen.org/resources/original-green-scale/single-crew-workplaces/</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Strangely Familiar</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The Thaden School architect's stated design goal: make something that resonates with what it references without replicating it. A barn that feels like a barn and doesn't look like a barn and also does look like a barn. Equivalent to Steve Mouzon's vernacular-classical principle: not imitation, not invention — a calibrated translation of familiar form.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Walk Appeal</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Steve Mouzon's distinction between a place that is walkable (you can walk there) and a place with Walk Appeal (you actually want to). On a suburban strip, people won't walk 200 feet between stores. On a great European street, they'll walk two miles. The difference is what the walk feels like — enclosure, human-scale frontage, destinations in the middle distance, interest every 20-24 feet. Documented at originalgreen.org/resources/initiatives/walk-appeal/</dd>
+
+          <dt style="padding:10px 0;font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Builders Guild</dt>
+          <dd style="padding:10px 20px 10px 20px;font-size:14px;color:var(--ink-l);">Norton Commons' term for its vetted builder program. Rather than selling lots to whoever could pay, Norton Commons sold only to a small group of pre-qualified builders, releasing lots in controlled batches of 25-30 to maintain scarcity and prevent gaps in the street wall. Each builder could only hold a limited number of lots at a time. The guild structure maintained design quality and sales narrative consistency across the entire project.</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Planning &amp; Design Frameworks</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:200px 1fr;gap:0;">
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Out of Balance</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Steve Mouzon's term for a pattern that's been applied too frequently, even if each individual instance was permissible. When a particular window type, roof form, material, or exterior color becomes overrepresented in a community, the town architect calls it "out of balance" and restricts it temporarily — even if it was previously approved. Without this mechanism, communities drift toward sameness through accumulated individually-acceptable decisions. Must be written explicitly into the town architect's authority; it will not be assumed.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Charrette</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">An intensive, participatory planning and design workshop — typically 3-7 days — where a design team works publicly alongside community members to produce a master plan or design framework. CNU's standard community engagement method. Produces better design and community credibility simultaneously.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Collision Density</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Thaden School's term for the structurally inevitable mixing of different people through shared spaces. The campus is designed so that students, teachers, and administrators encounter each other across discipline and role constantly — shared offices, communal meals, programs that mix grade levels. The residential planning equivalent: building types and street layouts that generate frequent cross-household encounter without requiring anyone to organize it.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Economy of Means</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Building the right amount of building with the right materials — the way traditional architecture was built when materials were expensive and labor was cheap. Opposite of economy of scale (more units, lower per-unit cost). Seaside was built with economy of means; Celebration was built with economy of scale. Seaside produced more vital urbanism. Not the same as cost-cutting.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Fractal Phase</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Phase 1 as a complete slice through all product types — not the easiest products in the easiest corner. A fractal is self-similar at any scale; the idea is that Phase 1 should contain the full genetic information of the complete development, even if it's small. The test: if Phase 1 was all that got built, would it feel like a place?</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Induced Demand</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The phenomenon where new road capacity generates new traffic rather than reducing congestion. Adding a lane absorbs roughly 40% of its added capacity immediately and approaches 100% within four years. The research basis for why building more road capacity to reduce traffic doesn't work. Cited in the context of NWA's highway network.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">LID</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Low Impact Development. Stormwater management approach that captures and infiltrates rain on-site rather than routing it to pipes and detention ponds. Includes porous pavers, bioswales, rain gardens, green roofs. Harris County (Houston) LID regulations — prompted by a competition — reduced required detention area by half and enabled more units on the same land.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Pedestrian Shed</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The area within comfortable walking distance of a destination — typically a quarter mile (roughly 5 minutes) for everyday destinations. Retail science uses the pedestrian shed to estimate potential customer base: approximately $1 million in annual retail sales can be supported per acre within a quarter-mile shed, if the environment is truly walkable.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">PLACES Framework</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">A framework for evaluating the mix of uses in a walkable community: Plazas, Local retail, Academic uses, Civic uses, Entertainment, Services. Academic and Civic are the most commonly forgotten — churches, community centers, schools, nonprofits. They're "last to arrive and last to leave" in a successful community, and they're what make a place feel inhabited rather than developed.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Succession Development</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The pattern by which real cities grow: small buildings replaced over time by slightly larger ones as land values and market demand increase. How most of urban America was built before the Thermostat Age. The alternative to master-planned development that tries to produce the end state from day one. Cited in the Building Better panel as the sustainable model for new urbanism going forward.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">TND</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Traditional Neighborhood Development. A planned community designed according to new urbanist principles — walkable streets, mixed uses, interconnected network, range of housing types, civic spaces. Norton Commons, Seaside, Rosemary Beach, Kentlands, New Town St. Charles, and Carlton Landing are all TNDs of varying scale.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">TOD</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Transit-Oriented Development. Development organized around transit access — typically within a half-mile of a rail or bus rapid transit station — at densities and with the mix of uses that make transit viable. The four-Ds framework (Density, Diversity, Design, Destination) applies to TOD but also to walkable neighborhoods without transit.</dd>
+
+          <dt style="padding:10px 0;font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Transect</dt>
+          <dd style="padding:10px 20px 10px 20px;font-size:14px;color:var(--ink-l);">A cross-section through a range of environments from rural to urban core, borrowed from ecology. DPZ's planning tool for organizing land use and building intensity: T1 (natural), T2 (rural), T3 (suburban), T4 (general urban), T5 (urban center), T6 (urban core). Used in Fayetteville's development code and in the NWA regional fire access analysis.</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Community &amp; Social Science</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:200px 1fr;gap:0;">
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Bonding vs. Bridging</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Bonding social capital: relationships among people who are already similar (private clubs, exclusive amenities). Bridging social capital: relationships across difference (public parks, libraries, markets). Klinenberg's distinction. Trillium's public spaces should be designed for bridging — accessible to people who don't live there — not just for bonding among residents.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Community Charter</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">A written statement of what a new urban community is and why it was built the way it was — distinct from the legal HOA document. Buyers read it before closing. Kentlands' version created a moment of informed consent, ensuring buyers understood the design philosophy and governance expectations before committing. Communities with a charter experience fewer second-generation buyer conflicts, because later buyers at least understood what they were selecting into.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Prospect/Refuge</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Ross Chapin's spatial concept drawn from environmental psychology. Humans need both simultaneously: refuge (private, protected) and prospect (able to see, connected to the world). The animal at the edge of the forest, watching the open field with its back covered. Applied to residential design: every building should offer a threshold space — porch, stoop, or garden gate — where residents can step outside without fully committing to public engagement.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Town Architect</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">A design professional who reviews every building plan in a new urban community for compliance with the design code, before permits are filed. Holds the line between individual builder decisions and the community's long-term character. Norton Commons, Kentlands, and Seaside all have or had this role. Kentlands' town architect has held the position for 25+ years. The Lakeland/Kentlands comparison documents the 20-year difference between communities that maintained this role and those that didn't.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Hardware vs. Software</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Ross Chapin's distinction from the Software of Community session. Hardware = the physical design (streets, buildings, courtyards, porches). Software = the governance structure, community agreements, traditions, and culture-building labor that must be intentionally built alongside the physical environment. Both required. Neither sufficient alone.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Social Infrastructure</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Eric Klinenberg's term for the physical spaces where social life occurs: parks, libraries, cafes, markets, dog parks, community centers, churches. Not a metaphor — actual physical infrastructure that functions like roads and water systems. When it's well-designed and maintained, it produces belonging and civic health. When neglected, communities become more vulnerable to every kind of stress.</dd>
+
+          <dt style="padding:10px 0;font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Weak Ties</dt>
+          <dd style="padding:10px 20px 10px 20px;font-size:14px;color:var(--ink-l);">Low-stakes, repeated connections with people you don't know well. The social science term for the everyday encounters at the coffee shop, the park, the school pickup — where trust travels and opportunity circulates across social groups. Chetty's cross-class friendship data is measuring the residue of weak tie formation. Carol Kyle built a fellowship around designing physical spaces that produce weak ties structurally.</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Fire &amp; Safety</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:200px 1fr;gap:0;">
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">NFPA 13 / 13D / 13R</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Three levels of sprinkler system standards from the National Fire Protection Association. 13D: residential light system designed to allow occupant escape; does not protect the person in the burning room. 13R: residential version with some coverage limitations. 13: full commercial system, designed to protect both occupants and property. LP should specify NFPA 13 for all multifamily buildings.</dd>
+
+          <dt style="padding:10px 0;border-bottom:1px solid var(--sage);font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Rear-Mount vs. Side-Mount Pumper</dt>
+          <dd style="padding:10px 0 10px 20px;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">The dominant US fire apparatus type (side-mount pumper) connects hoses at the side of the vehicle, requiring 20 feet of clear width to deploy. Most of the world uses rear-mount pumpers, which work on much narrower streets because hoses connect at the back. The 20-foot clear width requirement in US fire code is largely a function of equipment choice, not a safety finding.</dd>
+
+          <dt style="padding:10px 0;font-weight:600;font-size:14px;color:var(--ink);align-self:start;">Left of Bang</dt>
+          <dd style="padding:10px 20px 10px 20px;font-size:14px;color:var(--ink-l);">Fayetteville Fire Planning Chief Carl Keller's term for the proactive planning orientation — being in the conversation before incidents occur, before permits are filed, before designs are locked. Contrasted with the operational firefighter's reactive mode. The Fayetteville planning/fire model is built on this distinction: monthly non-crisis meetings rather than complaint-driven interactions.</dd>
+        </dl>
+      </div>
+    </details>
+  </div>
+
+  <!-- READING LIST -->
+  <div class="section">
+    <h2>Reading List</h2>
+    <p style="font-size:14px;color:var(--ink-f);margin-bottom:20px;">Books and reports referenced during the conference. Ordered by LP relevance, not by session order.</p>
+
+    <details open>
+      <summary><div><div class="summary-title">Start Here</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:1fr;gap:12px;">
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Walkable City</strong>
+            Jeff Speck — The source for the four-conditions framework, lane width data, induced demand, and the LoDo principle. Practical and readable. The most-cited book at the conference.
+          </dd>
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Palaces for the People</strong>
+            Eric Klinenberg — Social infrastructure as real physical infrastructure. The theoretical foundation for Klinenberg's CNU keynote. More readable than academic sociology has any right to be.
+          </dd>
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">We Should Get Together</strong>
+            Pat Bellows — Urban design and the loneliness epidemic. The source for the four seeds of connection framework and the evidence base for connection-oriented community design.
+          </dd>
+          <dd style="padding:12px 0;font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Pocket Neighborhoods</strong>
+            Ross Chapin — The hardware/software distinction, Third Street Cottages case study, prospect/refuge principle, and the design of communities at the scale of sociability. The most directly applicable design book for Trillium's residential fabric.
+          </dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Design &amp; Planning Reference</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:1fr;gap:12px;">
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">A Pattern Language</strong>
+            Christopher Alexander, Sara Ishikawa, Murray Silverstein — The foundational text for pattern-based design. 253 patterns from city scale to window seat. The Pattern Writing session at CNU is the practical application of this framework.
+          </dd>
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">The Original Green</strong>
+            Steve Mouzon — Sustainability built into the community fabric rather than added as technology. The source for the single-crew workplace concept, walk appeal framework, and the toolkit resources at originalgreen.org.
+          </dd>
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Cities for People</strong>
+            Jan Gehl — The research foundation for Gehl Americas' public life methodology. The 20–24 foot rhythm, 12 qualities of public space, and active frontage principles all originate here.
+          </dd>
+          <dd style="padding:12px 0;font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">How Buildings Learn</strong>
+            Stewart Brand — Why property lines and street layouts are the most permanent features of any landscape, and why design for adaptation matters more than design for a single moment. Source for the succession development concept.
+          </dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Reports &amp; Data Sources</div></div></summary>
+      <div class="detail-body">
+        <dl style="display:grid;grid-template-columns:1fr;gap:12px;">
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Surgeon General's Advisory on Social Connection (2023)</strong>
+            US Department of Health and Human Services — The institutional public health validation of walkable community design. Available at hhs.gov. Belongs in LP's investor deck alongside Chetty's economic data.
+          </dd>
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">NYU / Gale Social Infrastructure Report (2026)</strong>
+            Institute for Public Knowledge, NYU — The 80%+ belonging finding and cross-class relationship data from public space use research. Search: "Gale + Institute for Public Knowledge + NYU + social infrastructure."
+          </dd>
+          <dd style="padding:12px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Opportunity Atlas</strong>
+            opportunityatlas.org — Raj Chetty's team. Economic mobility data for every US census tract. Pull Cave Springs' score before any investor or entitlement conversation about community impact.
+          </dd>
+          <dd style="padding:12px 0;font-size:14px;color:var(--ink-l);">
+            <strong style="color:var(--ink);display:block;margin-bottom:3px;">Pew Charitable Trust: Single-Stair Building Fire Safety Study</strong>
+            NYC and Seattle, 2012–2024 — The source for the zero egress deaths finding and the fire death rate comparisons by building type. Referenced in the single-stair and fire safety sessions.
+          </dd>
+        </dl>
+      </div>
+    </details>
+  </div>
+
+  <!-- KEY FOLLOW-UPS -->
+  <div class="section">
+    <h2>Presenter Follow-Ups</h2>
+    <p style="font-size:14px;color:var(--ink-f);margin-bottom:16px;">Offers and commitments made at the conference that LP should act on.</p>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Bob Fields — free village center review</strong> Bob Fields offered to review LP's Trillium village center concept at no charge. Have the retail exit strategy answer ready before reaching out.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Alex (single-stair session) — slides and research</strong> The single-stair researcher offered to email all slides and supporting research to anyone who requested them. Contact via the CNU session materials.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Steve Mouzon — originalgreen.org toolkit</strong> Free access: walk appeal framework, single-crew workplace tool, townhouse guidelines, pattern library, and the "Declaration of Independence from Sprawl" PDF.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Pat Bellows — forthcoming guidebook</strong> Bloomberg fellowship guidebook on producing cross-class social connection in public spaces, in progress. Sign up for the Better Places Studio newsletter at WeShouldGetTogether.com for release notification.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Zimmerman Vogue — market study methodology</strong> Recommended for NWA market analysis where new urban product types don't yet exist in local data. Void analysis methodology identifies latent demand that rear-view analytics miss.</div>
+    </div>
+    <div class="check-item" style="border-bottom:none;">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Eric Klinenberg — book signing</strong> Signed copies of <em>Palaces for the People</em> were available at the conference. NYU/Gale social infrastructure report is the most current output of his research program.</div>
+    </div>
+  </div>
+
+<div class="footer">
+  <span>LP · CNU 34 · Section 08</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Streets, Buildings & Safety · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27051</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">9b0f7f3a-1442-4bdd-8701-e2935774b210</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27051, SXXKV5UFM55W-1413989332-27051</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Section 02</div>
+  <h1>Streets, Buildings &amp; Safety</h1>
+  <p>The physical mechanics of walkability — how streets need to be dimensioned, how buildings need to meet them, how fire safety arguments should actually be made. Most of this is measurable, and most of the conventional standards LP will encounter are not grounded in safety research.</p>
+
+  <!-- WALKABILITY -->
+  <div class="section">
+    <h2>Walkability</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">All four walkability conditions are required — miss one and the system fails</div>
+          <div class="summary-sub">D2·S3 · Walkable City</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Speck's argument is that walkability requires all four conditions simultaneously. Miss any one and the system fails.</p>
+        <p><strong>Useful:</strong> Destinations are mixed together and within walking distance. Separated uses (Euclidean zoning) make walkability structurally impossible regardless of how the streets are designed. Trillium's mixed product is not optional.</p>
+        <p><strong>Safe:</strong> The street design slows cars. The physical environment determines speed — not the posted limit. NACTO standard for commercial streets: 10-foot through lanes. Removing center lines costs nothing and slows traffic by an average of 7 mph. One-way streets behave like half a highway. Two-way everywhere.</p>
+        <p><strong>Comfortable:</strong> Buildings enclose the space. Height-to-width ratio of approximately 1:2 is the comfortable range. Street trees at roughly $500 each add a measurable $112,000 in perceived home value per tree (from a study correlating tree canopy with home prices). On-street parking serves as the buffer between pedestrians and moving traffic.</p>
+        <p><strong>Interesting:</strong> Signs of human life at a frequency of approximately every 20-24 feet. This is the neurological threshold — at walking speed of 3 mph, the brain needs about one new experience every 4 seconds to feel engaged. A blank wall of any material fails this test. Active frontage means depth and visible human activity, not just glazing.</p>
+        <div class="pull" style="margin-top:16px;">
+          <p>"Sprinkle walkability and you get nothing. Pick the smallest possible spot, meet all four conditions there, and let it radiate. Denver's LoDo was one block."</p>
+          <cite>Jeff Speck · D2·S3</cite>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Glass Walls Are Blank Walls</div>
+          <div class="summary-sub">D2·S1 · People vs. Car-Centered Design; D3·S2 · Public Life by Design (Gehl)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>This point was made in two separate sessions and is consistently ignored in development practice. A glazed storefront at any oblique angle is visually opaque. The rendering shows transparency. The street experience shows a reflective surface. What produces the "interesting" condition is depth behind the glass — merchandise at eye level, people visible working or moving, objects 18-24 inches inside the plane — not the glass itself.</p>
+        <p>Gehl's research is specific: people walk past blank facades faster and perceive the journey as longer, with measurably higher reported anxiety. The effect is independent of the facade material — stone, glass, painted concrete all produce the same response when there's nothing to look at. Trillium's ground-floor frontage requirements should specify what activates the space, not just what material covers it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Lane width, on-street parking, and center line removal are financial decisions with measurable downstream effects</div>
+          <div class="summary-sub">D2·S3 · Speck; D2·S1 · People vs. Car-Centered</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p><strong>Lane width:</strong> 10 feet for through lanes on commercial streets (NACTO standard). 12 feet for arterials where truck traffic is significant. The common argument for 12-foot lanes is "safety" — wider lanes give drivers more room. The actual research: wider lanes increase speeds, which increases the severity of crashes. A 500% increase in crash rates when going from 9-12 feet clear width to 20 feet was cited from published research.</p>
+        <p><strong>Center lines:</strong> Removing the center line from a two-lane residential street costs nothing (don't re-paint) and reduces average speeds by approximately 7 mph. Drivers self-regulate more carefully when they can't see a hard boundary. Many European residential streets have no center line.</p>
+        <p><strong>On-street parking:</strong> Every commercial street should have on-street parking on both sides. It's a physical buffer between pedestrians and moving traffic. It slows cars. It generates $175,000 in annual retail sales per space turning four times daily. Losing it to a fire hydrant or a driveway cut is a meaningful economic loss to adjacent merchants, not just a parking inconvenience.</p>
+        <p><strong>One-way vs. two-way:</strong> One-way streets produce faster traffic and worse retail performance. They're efficient for moving cars through an area. They're poor for destinations. Most new urban projects have reversed one-way streets where possible; the evidence on retail and pedestrian activity improvement is consistent.</p>
+        <p><strong>Induced demand:</strong> Adding lane capacity absorbs roughly 40% of the added capacity immediately and approaches 100% within four years. Building more road capacity to reduce congestion is approximately as effective as loosening your belt to cure obesity. The conference referenced this research directly in the context of NWA's highway network.</p>
+        <p><strong>Intersection density:</strong> More intersections per square mile correlate with less driving, more walking, and dramatically fewer traffic fatalities — not from fewer accidents but from slower speeds making accidents survivable. California research showed cities with more intersections had one-third the traffic fatalities of comparable cities with larger blocks. Benchmarks: 150 intersections/sqmi for LEED credit; 355 was the Westminster CO target; Rome runs about 700. LP should know Trillium's planned intersection density.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- BUILDING TYPES -->
+  <div class="section">
+    <h2>Building Types</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">New apartments are 6× safer than new single-family homes — single-stair buildings have zero egress-related deaths in 12 years of NYC and Seattle data</div>
+          <div class="summary-sub">D3·S1 · Legalizing Taller Single-Stair Buildings; D3·S8 · Fire Safety Workshop</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Single-stair apartment buildings — one central vertical core with elevator and stair, apartments surrounding it on all sides — are the standard small-scale residential building type in most of the world. In the US they're broadly permitted only up to three stories under current IBC. Above that, code requires two means of egress, which mandates a second stairway and the double-loaded corridor that eliminates most of the type's economic and design advantages.</p>
+
+        <p><strong>The fire safety data:</strong></p>
+        <ul style="list-style:none;padding:0;margin:12px 0;">
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage-mid);font-size:14px;display:flex;gap:12px;">
+            <span style="color:var(--mid);font-family:'Oswald',sans-serif;font-weight:600;min-width:180px;">New multifamily (post-2000)</span>
+            <span style="color:var(--ink-l);">1.2 fire deaths per million occupied units — safest housing type in America</span>
+          </li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage-mid);font-size:14px;display:flex;gap:12px;">
+            <span style="color:var(--ink-l);font-family:'Oswald',sans-serif;font-weight:600;min-width:180px;">New single-family (post-2010)</span>
+            <span style="color:var(--ink-l);">3.0 per million — 2.5× more dangerous than new apartments</span>
+          </li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage-mid);font-size:14px;display:flex;gap:12px;">
+            <span style="color:var(--amber);font-family:'Oswald',sans-serif;font-weight:600;min-width:180px;">All single-family homes</span>
+            <span style="color:var(--ink-l);">7.6 per million — 6× more dangerous than new multifamily</span>
+          </li>
+          <li style="padding:8px 0;font-size:14px;display:flex;gap:12px;">
+            <span style="color:var(--amber);font-family:'Oswald',sans-serif;font-weight:600;min-width:180px;">Pre-1969 multifamily</span>
+            <span style="color:var(--ink-l);">7.7 per million — the old stock is the problem, not the building type</span>
+          </li>
+        </ul>
+
+        <p><strong>NYC and Seattle study (2012–2024):</strong> Zero fire deaths related to egress in single-stair buildings across both cities over 12 years. Three deaths total in NYC single-stair buildings; all three occurred inside the unit of origin. One death in Seattle; same pattern. No case found where a second stairway would have changed the outcome. The buildings studied ranged up to 6 stories.</p>
+
+        <p><strong>Why evacuation is actually faster:</strong> In a two-stair building, units can be up to 250 feet from the nearest stair. In a properly designed single-stair building, all units are within 20 feet of the stair. Fire engineering analysis by WJE found single-stair building evacuation times less than one-third those of equivalent two-stair buildings, because occupant load per stair is lower and travel distances are shorter.</p>
+
+        <p><strong>Design parameters for above-3-story single-stair buildings:</strong></p>
+        <ul style="margin:12px 0 16px;padding-left:0;list-style:none;">
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Maximum floor plate: <strong>4,000 sqft</strong> (Seattle method)</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Maximum units per floor: <strong>4-6</strong></li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Maximum total units: <strong>24</strong></li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Unit-to-stair distance: <strong>all units within 20 feet</strong></li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Sprinklers: <strong>NFPA 13 full system</strong> (not 13R or 13D)</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Unit doors: <strong>self-closing, smoke-rated throughout</strong></li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);">Construction: <strong>Type I or II (non-combustible) above 3 stories</strong></li>
+          <li style="padding:6px 0;font-size:14px;color:var(--ink-l);">Stair smoke control: protected enclosure with <strong>automated vent at top of shaft</strong></li>
+        </ul>
+
+        <p><strong>Economic advantages:</strong> Construction cost savings of 6–13% vs. equivalent two-stair buildings. Net-to-gross efficiency of approximately 94% vs. 75-80% for double-loaded corridor buildings (more leasable area per square foot of construction). Buildings fit on parcels too small for a two-stair corridor building — which matters for Trillium's village center transition lots.</p>
+
+        <p><strong>The Cave Springs context:</strong> 3 stories is currently permitted under standard IBC. 4 stories is the practical planning ceiling given Cave Springs' community scale and the absence of existing tall buildings. 5 stories has compelling yield economics but is a multi-year conversation, not a near-term planning assumption. Design single-stair buildings to the 4-story standard even if initially building at 3 — this keeps the upgrade path open without requiring redesign.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">80% of buildings should do their job quietly — 20% earn the architectural emphasis</div>
+          <div class="summary-sub">D1·S6 · Tuning of Urbanism; D3·S4 · Lessons of Failure</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Three sessions at the conference independently arrived at the same proportion: 80% of buildings should be good, simple background fabric that provides enclosure and frontage without competing for attention. 20% get architectural expression — placed at corners, civic sites, and key urban conditions, not distributed randomly. A few are stars.</p>
+        <p>When everything competes at the same volume, civic legibility collapses. A street where every building is trying to be interesting produces a result that is exhausting rather than rich. The Georgian terraces of London and Edinburgh, which nobody complains are monotonous, are built on repetition with occasional emphasis. The repetition creates the room; the emphasis marks the moments that matter.</p>
+        <p>The specific failure mode: the "false variety" produced when one architect designs houses that are cosmetically different but structurally identical. It looks designed rather than grown. The solution is simpler code with more builders, not more complex code with fewer.</p>
+        <p>The practical implication for Trillium's architectural standards: specify where the 20% goes (corners, civic sites, the village center, gateway moments) and leave the 80% to perform their enclosure function well. A builder who can build a good background building is more valuable than a builder who can produce bespoke architecture.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- FIRE SAFETY -->
+  <div class="section">
+    <h2>Fire Safety — The Operational Picture</h2>
+    <p>The fire safety sessions at CNU were more productive than most on this topic because they included actual fire officials, not just advocates. What follows is the picture that emerged from that conversation — including where fire officials have legitimate concerns and where the evidence runs against conventional assumptions.</p>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Monthly non-crisis planning/fire meetings produce more than permit-counter arguments ever will</div>
+          <div class="summary-sub">D3·S8 · Urban Design and Fire Safety Workshop — Britt Bostic (City Planning) + Carl Keller (Fire Planning Chief)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Britt Bostic (Fayetteville City Planning) and Carl Keller (Fayetteville Fire Planning Chief) built a productive cross-department working relationship over two years. The mechanics: monthly meetings that are not crisis-driven or complaint-driven. They look at what's on the horizon — development applications coming through, code updates, new building types. Keller described his role shift from operational firefighter to planning chief as moving "left of bang" — into the conversation before incidents occur, before permits are filed, before designs are locked.</p>
+        <p>The practical result: when a rezoning came before Fayetteville's city council and council members tried to use fire safety concerns as grounds for denial, Keller's department showed up and said the rezoning was good for fire. It changed the political dynamic immediately. Having fire as an advocate rather than a cited concern is a fundamentally different position.</p>
+        <p>For LP: Cave Springs is 20 minutes from Fayetteville. The Fayetteville model took two years to build and LP doesn't have two years before Trillium's first buildings are designed. Start the Cave Springs fire department relationship now, not at the permit counter. Monthly meetings. Non-crisis conversations. The specific question to bring: what would you need to see to be comfortable with [specific building type or street width]?</p>
+        <p>Keller's framing that's worth using directly with Cave Springs leadership: fire stations are built for 50+ year service lives. The decisions LP is making about Trillium's density and connectivity will shape the Cave Springs fire department's operational picture for decades. That's a reason to be at the table now.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Ask fire departments to plan equipment for the streets they want — not streets designed around equipment they bought decades ago</div>
+          <div class="summary-sub">D3·S8 · Patrick Siegman, transportation planner</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The 20-foot clear width requirement for fire apparatus access in US code dates to 1915, when insurance underwriters needed to accommodate two horse-drawn fire carriages passing each other. The calculation: three horses per carriage, two carriages, plus straps and passing clearance — approximately 20 feet. There was no safety study behind it.</p>
+        <p>American fire departments predominantly use side-mount pumpers, which require 20 feet of clear width to deploy because fire hoses connect at the side of the vehicle and need room to run. Most of the rest of the world uses rear-mount pumpers, which work on much narrower streets because there's always clear space behind the vehicle. Modern ladder trucks have been re-engineered to deploy their stabilizers fully in as little as 11 feet of clear width — a smaller footprint than the typical American standard assumes.</p>
+        <p><strong>The ask to make to Cave Springs:</strong> Request that the fire department create a written equipment replacement plan that prioritizes more maneuverable apparatus when vehicles age out over the next 10-15 years. This is not asking them to change their safety standards. It's asking them to buy equipment designed for the streets they have rather than designing streets for the equipment they bought in 1990. Cost of maneuverable fire apparatus: several hundred thousand dollars per vehicle. Cost of designing an entire neighborhood around oversized apparatus: measured in land area, infrastructure length, and the walking environment for the next century.</p>
+        <p>Land value under residential streets in central California averages $140,000 per home served. Narrower streets don't just feel better — they represent real economic value in land that doesn't have to be paved.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">NFPA 13 in every multifamily building converts skeptical fire officials into advocates</div>
+          <div class="summary-sub">D3·S8 · Fire Safety Workshop — Fayetteville Fire Planning Chief</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>There are three relevant NFPA sprinkler standards:</p>
+        <ul style="margin:12px 0;padding-left:0;list-style:none;">
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;"><strong>NFPA 13D:</strong> Residential light system — designed to allow occupants to escape. Will not stop a modern fire; will buy time. Used in townhouses, single-family homes. Does not protect the person inside the burning unit from the initial fire event.</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;"><strong>NFPA 13R:</strong> Residential version with fewer heads, typically used in smaller multifamily buildings. Some coverage limitations.</li>
+          <li style="padding:8px 0;font-size:14px;"><strong>NFPA 13:</strong> Full commercial system — designed to protect both occupants and property. The only system that meaningfully addresses the person inside the room where the fire starts. Required for larger multifamily buildings; the standard LP should apply to all Trillium multifamily buildings regardless of what code minimally requires.</li>
+        </ul>
+        <p>Why this matters operationally: modern household furnishings are essentially solid petrochemicals. Foam furniture burns at rates that produce lethal conditions in 2-3 minutes. In a room fire, the self-closing door protects neighbors; NFPA 13 protects the person in the burning room. LP specifying NFPA 13 in all multifamily buildings and leading with that commitment in regulatory conversations converts a skeptical fire official into an ally.</p>
+        <p>The self-closing door finding: multiple sessions identified this as the single highest-impact fire safety intervention that's most commonly skipped. Self-closing unit doors and corridor doors slow smoke spread dramatically. Netherlands research found rescue rates in single-stair buildings with self-closing doors comparable to multi-stair buildings without them. This costs almost nothing at the specification stage and is difficult to add after construction.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">A connected street network serves emergency access better than a cul-de-sac — make that case explicitly</div>
+          <div class="summary-sub">D3·S8 · NWA Regional Transect Analysis</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The NWA regional analysis at the fire safety workshop showed that 41% of land within NWA cities is still largely undeveloped. It also showed that the disconnected cul-de-sac suburban pattern — which covers roughly 20% of NWA city land — produces the worst fire access outcomes: one way in, one way out, no alternative routing if the access road is blocked.</p>
+        <p>Trillium's connected street network with multiple routes to every building is a fire safety improvement over anything a cul-de-sac neighborhood offers. This argument should be explicit in LP's conversations with Cave Springs officials about street design. LP is not asking the fire department to accept a compromise — LP is proposing something that performs better for emergency access than what conventional suburban development would provide.</p>
+        <p>The practical metric: fire access requires that any building can be reached by at least two different routes. A connected grid provides this automatically. A cul-de-sac neighborhood usually doesn't. LP's engineers should be able to demonstrate this on the Trillium plan for any given parcel.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- INFRASTRUCTURE -->
+  <div class="section">
+    <h2>Infrastructure Design</h2>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Place street trees before finalizing utility locations — the reverse rarely leaves room</div>
+          <div class="summary-sub">D3·S6 · Neighborhood Affordability (Julie's session)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p><strong>Design street trees before placing utilities, not after.</strong> Tree root volumes extend under the sidewalk. If utilities are positioned without accounting for this, there often isn't room for trees. Street trees at $500 each add a measured $112,000 per tree in home value (Speck's data). The sequence matters: tree placement and utility cross-sections should be designed together in the same drawing set.</p>
+        <p><strong>Utilities under sidewalks:</strong> Running water under one sidewalk and sewer under the other can be more cost-effective than running both under the road centerline, because backfill requirements are significantly lower under sidewalk than under pavement (no Class 7 compacted backfill required). But utilities still require a 20-foot easement centered on the line — which on narrower T3/T4 lots means 6-7 feet of encroachment onto the buildable lot. Run the cost comparison for Trillium's specific lot depths before assuming sidewalk placement works.</p>
+        <p><strong>Porous pavers:</strong> Best suited to the water quality volume — treating frequent small storms, not the 100-year event. A 3-foot deep reservoir course under porous pavers can handle the 1-inch storm for a block on each side. Lifecycle costs are favorable and maintenance is substantially easier: utility repairs under permeable pavers leave no permanent trace. Use for village center streets and parking courts where stormwater treatment and easy maintenance both matter.</p>
+        <p><strong>Bioswale separation:</strong> Standard requirement is 10-foot separation between water lines and bioswales. In dense conditions, relocating a water line to achieve this separation can be expensive. Check utility ages — if a line is due for replacement in 5-10 years, time the replacement to coincide with bioswale installation and absorb the cost into the replacement budget rather than treating it as a standalone relocation.</p>
+        <p><strong>The Cave Springs stormwater opportunity:</strong> The Boise, Idaho model — where a city negotiated a license agreement with the county highway district allowing developers to place stormwater management in the right-of-way, with the developer taking on maintenance responsibility — works when the municipality is already facing stormwater permit obligations and sees private development as a co-solution. If Cave Springs or Benton County has EPA stormwater compliance requirements (most growing Arkansas municipalities do), LP may have a trade worth exploring: LP-funded right-of-way stormwater infrastructure in exchange for flexibility on lot-level easement requirements.</p>
+        <p><strong>Rear-loading and total paved area:</strong> The common objection to rear-loaded housing is that alleys cost more. The infrastructure cost analysis tells a different story on narrower lots: reduced street frontage per lot means less pavement per lot, and when you account for all the concrete — garage pads, driveways, curb cuts — front-loaded housing often has more total impervious surface than rear-loaded housing at the same density. LP's civil engineer should run this comparison at Trillium's specific lot dimensions before the first builder conversation about alleys.</p>
+      </div>
+    </details>
+  </div>
+
+<div class="footer">
+  <span>LP · CNU 34 · Section 02</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

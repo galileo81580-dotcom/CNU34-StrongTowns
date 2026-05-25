@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community as Product · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27052</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">426ed3ba-c437-47ac-aac3-80a5bbabcb64</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27052, SXXKV5UFM55W-1413989332-27052</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Section 03</div>
+  <h1>Community as Product</h1>
+  <p>The most consistent message across the social sessions: good physical design is necessary but not sufficient. Third Street Cottages had the right patterns and still needed a governance rebuild. Carlton Landing has the right streets and still required someone willing to build a stage at a loss. The physical environment sets up conditions. What actually happens depends on governance, programming, and the specific social infrastructure designed into the place.</p>
+
+  <!-- GOVERNANCE -->
+  <div class="section">
+    <h2>Governance and Control</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">The town architect role only works if it starts before the first builder submits a plan</div>
+          <div class="summary-sub">D3·S3 · Town Architect's Craft panel; D1·S5 · Aligning Design and Development</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The town architect is not an aesthetic preference. The Lakeland comparison is the sharpest evidence: same quality master plan as Kentlands, no town architect, dramatically inferior result two decades later. "Vinyl everything. Enclosure that doesn't enclose." The difference is documented and visible.</p>
+
+        <p><strong>Principle-based vs. taste-based review:</strong> Taste-based review works only when the reviewer's taste is genuinely exceptional (Duany is the cited example; nobody argues with him on aesthetics). For everyone else, every requirement in the code needs an explicit, articulable reason. Not "we don't like that" but "that window proportion creates this specific enclosure problem." Builders can argue with taste; it's harder to argue with documented principle. This matters for Trillium because the town architect LP eventually hires won't be there forever — the code has to be able to defend itself.</p>
+
+        <p><strong>The Steve Mouzon toolkit (originalgreen.org):</strong></p>
+        <ul style="margin:12px 0;padding-left:0;list-style:none;">
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);"><strong>Foundation principles document:</strong> One page. The six things that distinguish work in this community from work elsewhere. Every new designer or builder reads and acknowledges it before their first review.</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);"><strong>Review status checklist:</strong> Every requirement as a checkbox. Designers who read it before submitting catch most issues before the review. The checklist trains the market.</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);"><strong>The "out of balance" call:</strong> Even permitted patterns can be overused. When a particular window type, exterior color, or roof form appears too frequently, the town architect restricts it temporarily — even if previously approved. Without this mechanism, the community drifts toward sameness through accumulated individually-acceptable decisions.</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);"><strong>Porch height calculator:</strong> The finished floor elevation above the sidewalk, combined with fence or railing height, determines whether residents feel comfortable sitting on the porch and engaging with passersby. Specific geometry produces casual street conversation. Wrong geometry produces retreat.</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--sage);font-size:14px;color:var(--ink-l);"><strong>Builder workshops:</strong> Show builders how to execute requirements — with skilled craftspeople present — rather than telling them what's required. Many traditional construction techniques haven't been practiced in the region in 100 years. Showing is more effective than specifying.</li>
+          <li style="padding:8px 0;font-size:14px;color:var(--ink-l);"><strong>Error prevention seminars:</strong> Walk active construction sites and say explicitly what will have to be torn out before it gets any further. One practitioner put his foot through a flimsy crawl space cover to show a builder what a teenager would do to it. That conversation is worth more than a page of code language.</li>
+        </ul>
+
+        <p><strong>Timing:</strong> The role is most effective when established before the first builder submits a plan. Retrofitting it after problems appear is significantly harder.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">HOAs are wired to minimize costs — design governance that also stewards the vision, before residents arrive</div>
+          <div class="summary-sub">D3·S3 · Kentlands HOA-era town architect; D4·S1 · Software of Community</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>HOAs are structurally wired to maintain the minimum and keep assessments low — not to steward the community's design vision. This is by design (the legal structure prioritizes cost control and property protection). It's not a failure of the HOA; it's what HOAs are for. The problem is that new urban communities need ongoing vision stewardship, not just cost control.</p>
+
+        <p><strong>The Kentlands Historic Trust (KHT) model:</strong> Five residents including at least one or two architects. Modifications require town architect review and recommendation. Overriding that recommendation requires a KHT super-majority. This structure keeps the town architect's authority meaningful without concentrating unchecked power in one person. Design this before the first resident arrives.</p>
+
+        <p><strong>Two documents, not one:</strong> Every session that touched on governance reached the same conclusion independently. Keep the legal HOA document lean — as little as possible, only what must be at community scale. Create a parallel community agreements document, written with residents rather than imposed on them, reviewed and updated annually. Not rules — agreements. The distinction changes the governance culture. When a Kentlands resident said "these need to be agreements, not rules," the whole document was revised to reflect that.</p>
+
+        <p><strong>The code's legacy problem:</strong> The original Kentlands code was two pages. It grew significantly over time. Major updates in 2011 and 2023 added cottage and townhouse standards that weren't originally conceived, because those building types were developed without code guidance and underperformed. For Trillium: include cottage and townhouse standards from the beginning, even if those products aren't in Phase 1. Writing them in later is harder.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Later buyers chose a good investment, not a founding mission — design governance that doesn't depend on their buy-in</div>
+          <div class="summary-sub">D3·S4 · Lessons of Failure; D4·S1 · Software of Community</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Early buyers self-select. They came because they wanted the community. Later buyers come because it's a good investment or because the neighborhood is attractive. They often don't share the founders' values, and they're not obligated to. They get on the HOA board. Assessments stay low. The community agreements erode.</p>
+        <p><strong>The Kentlands response:</strong> A community charter that buyers were required to read before purchase. Not a legal document — a statement of what the community is and why it was built the way it was. It creates a moment of informed consent. People can still buy without agreeing, but they can't later claim they didn't know.</p>
+        <p>Trillium needs a version of this. It doesn't have to be elaborate — a few pages that explain the design philosophy, the governance structure, and what residents are agreeing to participate in. Written before the first closing, not after the first HOA dispute.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Over 20 years the developer, builders, and HOA will all change — the code must survive without its authors</div>
+          <div class="summary-sub">D3·S3 · Town Architect panel; D3·S4 · Lessons of Failure</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Over a 20-30 year build-out, LP should expect: at least one significant market downturn; at least one financing structure stress; builder partners who change or fail; city government transitions; an eventual HOA takeover. Every experienced practitioner on the Lessons of Failure panel had been through at least one of these. The projects that survived with their character intact had two things: a strong design code that could be enforced without the original architect present, and a founding document that explained why the standards existed.</p>
+        <p><strong>New Town St. Charles:</strong> During the recession, a bank took over the project. There was no design review for several years. Production homebuilders came in with no interest in new urban standards. The recovery was difficult and imperfect. The lesson: the code has to survive periods when no one is actively enforcing it. Simple, principle-based, documented with reasons rather than just specifications.</p>
+        <p><strong>Entitlement insurance:</strong> Get approval for significantly more units than you plan to build. New Town St. Charles did this deliberately — far more entitlements than expected — to give the plan room to evolve and to preserve flexibility if market conditions change. Under-built is always better than fought-for-and-lost.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- PATTERN WRITING -->
+  <div class="section">
+    <h2>Pattern Writing — Design Standards That Work</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Specify the intention and the spatial outcome, not the method — builders can game the method</div>
+          <div class="summary-sub">D3·S5 · Pattern Writing: Design DNA for Livable Neighborhoods</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Based on Christopher Alexander's <em>A Pattern Language</em> framework, pattern writing is a practical alternative to prescriptive architectural codes. Patterns name the intention and suggest the spatial response without specifying the form. A "shared commons" pattern says the community should have a space that is visible from the entry, accessible from all homes, and socially magnetizing — without specifying its shape, material, or size. The form emerges from the intention rather than the specification.</p>
+
+        <p><strong>Why this matters for Trillium's builder standards:</strong> Over-specified codes produce two failure modes. They intimidate smaller builders who see the standard and assume they can't meet it. They produce litigation when builders meet the letter but not the spirit. Pattern-based standards are harder to game because they describe outcomes rather than methods.</p>
+
+        <p><strong>The process:</strong> Patterns are discovered through stakeholder engagement before any design begins — clients, neighbors, city staff identifying what the problems and opportunities are. When stakeholders co-author the patterns, they feel ownership. When design goes wrong later, you can return to the pattern level ("something's not right about this pattern") rather than arguing about the specific drawing.</p>
+
+        <p><strong>The 12-pattern summary:</strong> LP should be able to describe Trillium Village in approximately 12 key design-intention patterns — the equivalent of the Eastern Kentucky pocket neighborhood example from the session. Not marketing language, not code language: design intention language that communicates to a builder, investor, or city official what the community is trying to be. If LP can't list these 12 patterns, the design vision hasn't been articulated at the right level of precision.</p>
+
+        <p><strong>The scale of sociability:</strong> Patterns should be designed at human-scale group sizes of roughly 6-12 households. For a point access block: the 4-6 households on a given floor around a shared landing are one scale of sociability. The cluster of buildings around a shared courtyard is another. The neighborhood around a park is another. Nesting these scales from floor landing to block to neighborhood is what makes density feel human rather than institutional.</p>
+
+        <p><strong>The alley cost analysis as a pattern example:</strong> When a skeptical builder claimed alleys cost more, the presenter ran a detailed infrastructure cost comparison. On narrower lots, alleys often cost <em>less</em> per lot because reduced street frontage means less pavement, and rear utilities reduce easement requirements on the primary street. The analysis became a pattern: "alley parking court." LP's civil engineer should run this at Trillium's specific lot dimensions before builder conversations begin.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- SOCIAL INFRASTRUCTURE -->
+  <div class="section">
+    <h2>Social Infrastructure</h2>
+    <p>Eric Klinenberg's closing argument at CNU: social infrastructure is not a metaphor. It's a real physical thing — playgrounds, parks, libraries, cafes, dog parks, markets — and it functions the way other infrastructure functions. When it's well-designed, maintained, and programmed, it produces belonging and civic health. When it's neglected or absent, the consequences compound.</p>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Every Infrastructure Decision Is Also a Social Infrastructure Decision</div>
+          <div class="summary-sub">D4·CK · Eric Klinenberg keynote</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The sponge city examples from Copenhagen and Hoboken: flood retention infrastructure designed simultaneously as public parks. A hockey rink with a water storage basin underneath. A park with barriers that activate during rain events and drain over hours. The infrastructure is invisible until needed; in the meantime it's a gathering place. Hoboken's approach produced better flood performance and rising property values and new commercial activity — three outcomes from one investment.</p>
+        <p>The principle LP should apply to every Trillium infrastructure decision: how many functions can this serve simultaneously? A stormwater retention pond is a required infrastructure element. It's also a potential gathering space, walking loop, and community focal point — if designed with the social function in mind from the beginning. Designing it as pure drainage and then trying to add social function later is much more expensive and less effective.</p>
+        <p><strong>Bonding vs. bridging:</strong> Not all social infrastructure does the same work. Bonding infrastructure brings together people who are already similar (private clubs, exclusive amenities). Bridging infrastructure brings together people across difference — public libraries, open parks, markets, dog parks. Klinenberg's empirical data: 80%+ of people who regularly use bridging social infrastructure sites report a deeper sense of belonging to their community; roughly half have built at least one relationship with someone from a different ethnicity in the previous year. These are the measurements of Chetty's cross-class friendship mechanism operating at the street level. Trillium's public spaces should be designed for bridging, which means genuinely accessible and welcoming to people who don't live there.</p>
+        <p><strong>Maintenance is revitalization:</strong> Multiple sessions made this point. Klinenberg's heat wave research is the sharpest version: a neglected public space signals to everyone who uses it that they are not worth the investment, which actively erodes civic trust. A reserve maintenance budget established as a formula at construction — not as a discretionary annual line item — is not an operational cost. It's what makes the social infrastructure investment pay off.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">A community host costs less than security and produces better social outcomes</div>
+          <div class="summary-sub">D3·S2 · Public Life by Design (Carol Kyle)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Memphis River Parks Partnership created a staff role called "host" — not security guard, not concierge. The host's job: greet everyone who enters the park, pick things up, help people find what they need, intervene quietly in tension before it becomes conflict. Uniforms said "Hi neighbor" to establish equal footing immediately. The result: no security guards needed, no one felt policed, conflict rates dropped during programming events, and social connection at the riverfront measurably increased.</p>
+        <p>The first hire for Trillium's village center might not be a retail manager or events coordinator. It might be this person. The host role costs less than security, produces better social outcomes, and is a direct operational embodiment of the community values LP is trying to build. Budget it as a position before the first business opens.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Traditions don't emerge on their own — someone has to start them before the community can sustain them</div>
+          <div class="summary-sub">D4·S1 · Software of Community (Ross Chapin; Clay Chapman, Carlton Landing)</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Clay Chapman's experience at Carlton Landing, Oklahoma: culture doesn't emerge automatically from good design. You can wait for it, or you can create the conditions and early stories that give it somewhere to grow. His method: create events with the potential to become traditions — consistent occasions where the same behaviors begin to take shape.</p>
+        <p>The reference examples — a neighborhood shopping cart race that has run for 25 years; a community parade that started with a silk whale and now draws hundreds — aren't amenities. They're community identity. The stories that make a place feel like a hometown rather than a development. The developer who wants this has to be willing to do the work of initiating it before the community can sustain it on its own.</p>
+        <p>For Trillium: what is the first event that could run for 25 years? This connects to the "bike shop principle" from Day 1 and the LoDo principle from Day 2 — the same idea from three different angles. Find the first thing that creates a gravity field and a story, and do it before the homes fill in.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- COMMUNITY SOFTWARE -->
+  <div class="section">
+    <h2>Hardware vs. Software</h2>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Good physical design doesn't guarantee good community — the social practices have to be designed too</div>
+          <div class="summary-sub">D4·S1 · Ross Chapin, pocket neighborhoods</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Third Street Cottages in Langley, Washington (1996) may be the first contemporary cottage code in the US. Eight cottages around a shared garden. The hardware was correct: shared ground visible from the entry, porches overlooking the common, graduated privacy from public to semi-private to private, parking tucked away.</p>
+        <p>For the first residents — people who chose the community for what it was — it worked. Over time, houses sold to buyers who wanted the aesthetic, not the community. They didn't come to work parties. They preferred to write a check rather than pull weeds. The HOA had rules but no shared understanding of how to resolve conflicts. The physical patterns had set up the conditions. The social practices — how neighbors make decisions, resolve differences, take responsibility for common space — weren't there.</p>
+        <p>Ross Chapin's admission: "I assumed good design does the work." The lesson he drew was that the physical patterns and the social practices are both required, and the second can't be assumed from the first.</p>
+        <p><strong>The prospect/refuge principle:</strong> Every residential building should offer a threshold space — a semi-private porch, terrace, or stoop — where a resident can step outside without committing to full public engagement. The animal at the edge of the forest, able to see the field but with its back protected. We choose the café seat at the window for the same reason. Design gives residents the agency to modulate their level of engagement. This is the residential-scale version of everything the social sessions were arguing for at the neighborhood level.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Physical design controls two of the four things friendship requires: proximity and frequency</div>
+          <div class="summary-sub">D4·S1 · Pat Bellows, We Should Get Together</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Friendship requires four conditions: compatibility (shared interests and values), proximity (physical nearness), frequency (regular, meaningful encounter), and commitment (mutual investment). Of these four, physical design directly controls proximity and frequency. Compatibility is mostly unchosen among neighbors. Commitment grows from repeated frequency.</p>
+        <p>The design question for every Trillium street section, public space, and village center layout: how many times per week will a resident encounter a neighbor in a meaningful way — not just passing on the sidewalk, but pausing, recognizing, exchanging something? If the answer is near zero, the design hasn't done its job regardless of how well-executed it is architecturally.</p>
+        <p>Loneliness has grown from 46% to 57% of US adults in 11 years. It continued getting worse after COVID, not better. The communities where it's worst are often physically fine — they just don't generate frequency and proximity between people who might become friends. The conference research community increasingly treats this as a design failure rather than a social one.</p>
+      </div>
+    </details>
+  </div>
+
+<div class="footer">
+  <span>LP · CNU 34 · Section 03</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

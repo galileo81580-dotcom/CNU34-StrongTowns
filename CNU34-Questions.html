@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Questions · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27057</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">b85da667-39fb-408d-a4de-b96b94731640</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27057, SXXKV5UFM55W-1413989332-27057</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Section 06</div>
+  <h1>Open Questions</h1>
+  <p>Decisions LP needs to make — not tasks to complete, but positions to reach. Organized by urgency. The checklist handles specific actions; these questions handle the underlying strategic choices that those actions depend on.</p>
+
+  <div class="section">
+    <h2>Decide Now — Foundational to Phase 1</h2>
+    <p style="font-size:14px;color:var(--ink-f);margin-bottom:20px;">These questions, if left open, will either paralyze Phase 1 decisions or produce decisions by default that LP will have difficulty reversing.</p>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">What is the retail exit strategy for the village center?</div>
+          <div class="summary-sub">D1·S3 · Bob Fields</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Profit center (build to sell to an institutional fund), amenity (build to increase surrounding housing values and retain), or legacy (build to serve the community for generations). These are genuinely different strategies with different implications for building design, retail mix, lease structure, financing, and management. Designing for all three simultaneously is designing for none of them. Bob Fields' position: this is the first question he asks any developer, and the answer determines every retail decision downstream. LP hasn't answered it explicitly for Trillium's commercial areas.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Who is the town architect, and when do they start?</div>
+          <div class="summary-sub">D3·S3 · D1·S5</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The role is most effective when established before the first builder submits a plan — not after problems appear. Does LP have a specific person or firm in mind? Does that person have the capacity to write Trillium's design code, lead builder workshops, and enforce the code consistently over a 20-year build-out? Or is this still an open role without a candidate? The Lakeland warning is specific: the absence of this role produces a measurably different community over time, and the damage is very difficult to reverse.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">What is LP's 3/4/5 story position for multifamily buildings?</div>
+          <div class="summary-sub">D3·S1 · D3·S8</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>3 stories is the current IBC-compliant ceiling for single-stair buildings without special approval. 4 stories is the Cave Springs practical planning ceiling given the absence of existing tall buildings and the fire department's current equipment and staffing. 5 stories has compelling yield economics but requires multi-year fire department engagement and equipment planning before it's a realistic design assumption. This position needs to be reached before Phase 1 design proceeds, because the pro forma pressure toward 5-story buildings is real and will create internal decisions by default if the position isn't explicit.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Are any LP investor partners on a 7-year fund timeline?</div>
+          <div class="summary-sub">D3·S4</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Institutional fund structures that require exit in 7 years are structurally incompatible with new urban development that takes 20-30 years to reach its full expression. The failure mode is predictable: projects designed to exit rather than mature, community vision compromised when the financial structure requires a sale, second-generation owners who didn't sign up for the founding mission. If LP has partners in this situation, the resolution needs to happen before Trillium's development hits a stress point, not during one.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section">
+    <h2>Decide Before Phase 1 Opens</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Does LP plan to retain any Trillium assets long-term?</div>
+          <div class="summary-sub">D1·S2 · David Johnston; D3·S4</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>David Johnston's argument: every time you build to sell, you pay tax and exit the appreciation. Norton Commons retained commercial and rental assets, which have appreciated alongside the residential development and now generate ongoing income. The single-stair apartment buildings LP may build — specifically — are the assets worth retaining. They'll appreciate with the surrounding neighborhood and generate reliable rental income while LP continues developing the rest of Trillium. Retaining them requires LP to operate as a long-term property manager, which is a capability and a cost center worth deciding consciously rather than by default.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Is the village center designed to start one-story?</div>
+          <div class="summary-sub">D3·S4 · D1·S3</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Every successful new urban village center in the reference set — Seaside, Rosemary Beach, Kentlands — started as one-story commercial with the right urban relationship to the street, and grew into multi-story over 15-25 years. Rosemary Beach demolished its last one-story building two years ago. The Lessons of Failure panel's specific term for launching with multi-story mixed-use masonry in Phase 1: "trying to give birth to a teenager." Does LP's current village center plan launch as an infant — room to grow — or is it designed as the end state from day one?</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">What is Trillium's first tradition-founding event?</div>
+          <div class="summary-sub">D4·S1</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The specific event that could run for 25 years — that creates community identity and produces the story that makes Trillium feel like a hometown rather than a development. The reference examples from Carlton Landing (a neighborhood shopping cart race, a silk whale parade) were both initiated by community members before the development was complete. Someone has to be willing to do the labor of starting them before the community can sustain them. LP should have a candidate event and a plan for initiating it before Phase 1 opens, not after the first residents arrive and wonder why nothing's happening.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section">
+    <h2>Decide Before Phase 2</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">What is LP's authoritative NWA household data?</div>
+          <div class="summary-sub">D1·S4 · D2·CK</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The 62% one-and-two-person household figure comes from NWA census data and is directionally consistent with national trends for growing metros. There is internal LP disagreement about whether it accurately represents the Cave Springs specific market. This is resolvable: pull census tract-level data for Cave Springs. Let that number — whatever it is — anchor the product mix conversation for Phase 2 rather than debating it abstractly. The market study methodology LP uses also matters: conventional analysts are rear-view; Zimmerman Vogue's void analysis methodology was specifically recommended for markets where new urban product types don't yet appear in local data.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Is there a civic anchor parcel reserved in Trillium's plan?</div>
+          <div class="summary-sub">D1·S1 · PLACES framework</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The PLACES framework identified Academic and Civic uses — churches, community centers, schools, nonprofits — as the ingredients most commonly forgotten in mixed-use communities. They're last to arrive and last to leave; they're what makes a place feel inhabited rather than developed. Thaden School is 15 minutes away and might be worth a partnership conversation. But whether Thaden is involved or not, Trillium should have a parcel or pathway reserved for a civic or academic anchor. Has land been held for this, or has the plan assumed it will happen when the time comes?</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">What is LP's plan for single-stair buildings with Cave Springs?</div>
+          <div class="summary-sub">D3·S1 · D3·S8</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Single-stair multifamily buildings above 3 stories require either a jurisdiction that has enabled them or an explicit conversation with the fire authority. The Fayetteville model shows this is achievable through proactive relationship-building, not through arguing at the permit counter. Does LP have a plan for this conversation, a timeline, and a clear picture of what LP will commit to (NFPA 13 sprinklers, self-closing doors, the specific floor plate and unit count parameters) in exchange for Cave Springs' flexibility?</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section">
+    <h2>Ongoing Strategic Questions</h2>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">How does LP measure community success at Trillium over 20 years?</div>
+          <div class="summary-sub">Multiple sessions</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Absorption rates, home prices, and retail occupancy are the standard developer metrics. They're also the metrics that conventional suburban development uses. If LP's aspiration for Trillium is different — a community that's hard to leave, that produces the social outcomes Chetty measured, that builds the kinds of relationships Carol Kyle described — then the measurement framework should be different too. Not necessarily instead of financial metrics, but alongside them. What would LP point to in 10 years as evidence that Trillium worked?</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">What is LP's posture toward the broader NWA development trajectory?</div>
+          <div class="summary-sub">D3·S4 · Lessons of Failure; D3·S8 · Regional transect analysis</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The regional transect analysis showed 41% of NWA city land still undeveloped. The Lessons of Failure panel named the risk that NWA defaults to conventional sprawl despite good codes, good intentions, and a regional planning process. Trillium is the most visible private-sector counterexample. Does LP have a view on what role Trillium should play in the broader regional conversation — not just as a development project, but as a demonstration? And if conventional development continues to dominate NWA despite Trillium's success, what does that mean for LP's long-term strategy?</p>
+      </div>
+    </details>
+  </div>
+
+<div class="footer">
+  <span>LP · CNU 34 · Section 06</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

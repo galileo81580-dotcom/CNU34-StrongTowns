@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strong Towns National Gathering · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27060</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">f7285c8a-8c44-48bc-9161-18f4677fecb1</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27060, SXXKV5UFM55W-1413989332-27060</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Bonus Section</div>
+  <h1>Strong Towns National Gathering</h1>
+  <p style="font-size:15px;color:var(--ink-l);">Fayetteville, Arkansas &nbsp;·&nbsp; May 19–20, 2026 &nbsp;·&nbsp; 6 sessions</p>
+  <p style="font-size:13px;color:var(--ink-f);margin-top:4px;">Kyle Smith, Bob David, and Brenda Christian attended. Julie Vaught attended the Community session. Chad Caletka attended the Parking Reform session.</p>
+  <p style="margin-top:14px;">Strong Towns and CNU are different movements reaching the same conclusions from different directions. CNU approaches the problem through design. Strong Towns approaches it through municipal finance. Together they make the complete argument: Trillium isn't just a better community to live in — it's the only kind of development that Cave Springs can actually afford to maintain over 50 years.</p>
+  <p>The framing here is different from the CNU recap. Where CNU sessions asked what LP should build, the Strong Towns sessions ask what Cave Springs needs to understand to be a good long-term partner. This is LP as steward, not just developer.</p>
+
+  <!-- KEY FINDINGS -->
+  <div class="section">
+    <div class="section-label">The Short Version</div>
+    <h2>Five Things Worth Knowing</h2>
+
+    <div class="finding">
+      <div class="finding-num">1</div>
+      <div class="finding-body"><strong>Conventional suburban development creates infrastructure liabilities that cities cannot afford to maintain.</strong> Lafayette, Louisiana grew its population 3.5× after WWII. Its water pipe per person grew 10×. Fire hydrants per 1,000 people grew 21×. The tax revenue from suburban homes and strip malls doesn't come close to covering the ongoing maintenance cost of the infrastructure serving them. Marohn's calculation for Lafayette: the median family would need to pay $9,200/year in city taxes — not $1,500 — just to break even on what they've already built. The same pattern holds in every city Urban3 has modeled. NWA is not an exception.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">2</div>
+      <div class="finding-body"><strong>Compact, walkable development is the most fiscally productive pattern for cities.</strong> Urban3 has mapped hundreds of cities. The finding is consistent: pre-WWII walkable neighborhoods — even poor, neglected ones — generate more tax revenue per acre than they cost to serve. Suburban fringe development consistently costs more to serve than it generates. In Rogers, NWA: Downtown Rogers produces $131,000/acre in sales taxes on 2 acres. Pleasant Crossing Commons produces $38,000/acre on 107 acres. More land, less return, more maintenance obligation. The old block across the street from the new Taco John's paid 78% more in taxes. The city put the Taco John's on the economic development brochure.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">3</div>
+      <div class="finding-body"><strong>Parking minimums were made up in the 1950s and never corrected.</strong> A 1954 Planning Advisory Service document acknowledged the rules were guesses — "doubtful that any of the planners or architects could agree on the number of square feet of parking required." One survey of Connecticut cities found requirements ranging from 2 to 8 spaces per bowling lane for the same land use, city to city. Austin eliminated parking minimums in 2022 and generated $1.9M in parking revenue by 2025. The space consumed by required parking destroys the density that makes development fiscally productive.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">4</div>
+      <div class="finding-body"><strong>The communities that resisted the opioid epidemic had something in common: people knew each other.</strong> Sam Quinones spent 15 years tracking this. Hazard, Kentucky — poor, Appalachian, with no reason on paper to succeed — revitalized through local entrepreneurship and the social fabric of people who knew each other and showed up for each other. Rome, Texas — a poor border town where a band director named Al built a program that sent kids to college and produced 81 future band directors — competed in the Texas state marching band finals against wealthy Dallas suburbs. The physical gathering places and the human-scale social structures that preceded the epidemic protected those communities when the pills arrived. Communities that had already shredded those structures didn't have that protection.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-num">5</div>
+      <div class="finding-body"><strong>A city's net financial position tells you more about its future than its annual budget.</strong> The Finance Decoder — a free spreadsheet from strongtowns.org — takes 12 numbers from a city's Annual Comprehensive Financial Report and produces a net financial position trend line. Winnipeg: -$1.2 billion. Most cities are on a similar trajectory. 87% of all municipal infrastructure is roads and pipes. Once you understand that, you know where the problem is, and you know that the development pattern — not the administrative decisions — is the root cause.</div>
+    </div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="section">
+    <h2>Session Notes</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.12em;flex-shrink:0;">Day 1 · Keynote</span>
+            <span class="summary-title">The communities that resisted opioids had gathering places and people who knew each other</span>
+          </div>
+          <div class="summary-sub" style="margin-left:100px;">Sam Quinones · 1h 21m · Introduced by Chuck Marohn</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Marohn's introduction framed the session in terms that apply directly to LP's work. He described a culture searching for systems that don't require people to be decent to each other — automated vehicles that let drivers avoid eye contact, state housing preemptions that bypass local persuasion, grant projects that substitute for relationships. Strong Towns is the opposite of that, he said. It's the daily small work, the relationship building, the hard block-by-block effort that has no shortcut.</p>
+        <p>Quinones spent 15 years following the opioid epidemic across America — from the OxyContin origins to the fentanyl era — and arrived at a thesis that is more about communities than about drugs. His first book, <em>Dreamland</em>, is named after a public swimming pool in Portsmouth, Ohio. The pool was the center of the community. When manufacturing collapsed in the late 1980s, the pool closed. Then the pills took over. The pool wasn't incidental; it was where people knew each other. Without it, they didn't.</p>
+        <p><strong>Hazard, Kentucky.</strong> Every conventional analysis said Hazard had no future — too small, too poor, too remote, too burdened by addiction. What Quinones found was a downtown coordinator named Natalie (an artist, not a business administrator — hired because she cared about the place) who began building tiny "elf houses" out of scrap materials and placing them at night near struggling storefronts. A little building next to a boarded-up business, suggesting that something could inhabit it. People started coming to find the elves. Then businesses started opening. A bookstore so small that Quinones said his hotel room was comparable in size. A toy store that competed with Amazon by curating toys for parents whose kids were throwing birthday parties — you register your child there, I'll learn what she likes, your friends can come in and I'll help them find the right thing. People came and paid more than Amazon because they were buying from someone who knew their kid's name.</p>
+        <p>The recovering addicts in Hazard were a key part of the revitalization — people who had spent years in self-focused addiction and emerged with enormous gratitude and energy. Quinones described them as "fossil fuel" — energy from decay. Towns that understood how to harness that energy got a population of extraordinarily motivated, community-oriented people who didn't take anything for granted.</p>
+        <p><strong>Rome, Texas.</strong> A high school band director named Al took over a program in a poor, remote border town 100 miles from the nearest Apple store. His students' parents had never been to college. He designed a system — beginning in sixth grade — that taught kids with no music lessons to become genuinely excellent musicians. He played them Kyrino Moreno on the first day and said, "We're going to play that." The kids said, "We are?" He said, "Yeah. No problem." Kids rise to the level you set, he told Quinones. Set it low, they'll rise to low. Set it high, they'll rise to high. Just don't tell them it's hard.</p>
+        <p>The last year Al was teaching, Rome competed in the Texas state marching band finals. The map of the top 12 finalists: six schools from wealthy Dallas suburbs, four from Houston suburbs, one from Houston, and then — way down at the bottom of the state, near the border — Rome, Texas. Quinones saw that map and knew why he'd been writing about tuba players. Eighty-one of Al's former students became band directors themselves. A generation of teachers, trained by a teacher who believed in them before they believed in themselves.</p>
+        <p>The tuba book argument: tuba players and band directors embody the qualities that sustain community and resist addiction — focus in a time of distraction, postponed gratification, perseverance through failure, collaboration in a time of isolation. These aren't soft qualities. They're the specific characteristics that the opioid era, the social media era, and the drive-through era were eroding.</p>
+        <p><strong>For LP:</strong> The Hazard story is not about economic development strategy. It's about a place deciding to be hospitable to the entrepreneurial ideas of the people who live there — rather than making the town safe for a Walmart or a Chick-fil-A. The Rome story is about what happens when someone believes in a community and does the daily small work of building something without knowing if it will matter. Both of these are descriptions of what Trillium Village should enable in Cave Springs, not just what LP should build.</p>
+        <div style="margin-top:16px;"><a href="https://otter.ai/u/w60HbaTR9Zim7ye0xSvbSbmXsdg" target="_blank" style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-f);border-color:var(--sage-mid);">Transcript on Otter →</a></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.12em;flex-shrink:0;">Day 1 · Main</span>
+            <span class="summary-title">Walkable neighborhoods generate more tax revenue per acre than suburban fringe — in every city, without exception</span>
+          </div>
+          <div class="summary-sub" style="margin-left:100px;">Strong Towns 101 · Chuck Marohn · 1h 33m</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Marohn has given some version of this presentation since 2010. He makes no apologies for repeating it. "The Rolling Stones play Satisfaction till they can't anymore. I'll do this till they take me off the agenda."</p>
+
+        <p><strong>The foundational argument:</strong> Cities grew incrementally for thousands of years — pop-up structures that became wood buildings that became brick and granite as the city matured. The post-WWII suburban experiment replaced this with a one-generation build-out: roads and pipes and housing at full scale, all at once, funded by federal programs. The problem is that infrastructure has a 50-year replacement cycle, and the tax base of suburban development doesn't generate enough revenue to fund that cycle.</p>
+
+        <p><strong>Brainerd, Minnesota</strong> (Marohn's hometown): Population at the end of WWII — 13,500. Population today — 13,500. But the city is now 10 times larger in area. Ten times the road. Ten times the pipe. Ten times the area to police and fire. Same number of people.</p>
+
+        <p><strong>The Taco John's story.</strong> Two blocks in downtown Brainerd. One block: a pawn shop, a barbershop, a liquor store, a bankruptcy attorney — buildings that hadn't been updated since the 1920s. The city called this blight and was thrilled when a developer replaced it with a new Taco John's drive-through. New building, met every code requirement, commercial sprinklers, ADA bathrooms, correct signage, little strip of native weeds near the dumpster. Put it on the economic development brochure.</p>
+        <p>What nobody counted: the old block had $1.1 million in taxable value. It employed more people than the Taco John's. Every business owner on that block banked locally, hired local accountants, advertised locally. The new Taco John's has $600K in taxable value. Revenue leaves the community. The city is collecting 78% more taxes from the block that was "blight" than from the block that replaced it.</p>
+
+        <p><strong>Lafayette, Louisiana — the profit/loss map.</strong> Joe Minicozzi's firm (Urban3) mapped every revenue source the city had against every ongoing maintenance cost. Blue parcels pay more in taxes and fees than they cost to serve. Red parcels cost more to serve than they generate. The downtown and original neighborhoods: blue. The strip malls, big-box stores, cul-de-sac suburbs on the fringe: red. The "blighted" shotgun shack neighborhoods are subsidizing the gleaming suburban fringe. And the median family would need to pay $9,200/year in taxes — not $1,500 — to cover the maintenance of what they've already built.</p>
+
+        <p><strong>The four-step process:</strong></p>
+        <ol style="margin:12px 0;padding-left:20px;font-size:14px;color:var(--ink-l);line-height:1.8;">
+          <li><strong>Humbly observe</strong> where people actually struggle to use the city as it exists</li>
+          <li><strong>Find the next smallest thing</strong> that can be done with materials on hand right now</li>
+          <li><strong>Do it now</strong> — temporary paint, cones, a bench, a cleaned sidewalk</li>
+          <li><strong>Repeat</strong>, building on what works and abandoning what doesn't</li>
+        </ol>
+
+        <p><strong>Broad Avenue, Memphis.</strong> Neighbors painted temporary crosswalks and bike lanes, swept out vacant storefronts, and hosted a weekend block party without asking permission. A year later, every storefront was occupied. The city replaced temporary paint with permanent markings. Then curb extensions. Private capital followed the signal. The Muskegon "chalets" — cheap storage sheds painted up and rented to startup entrepreneurs for $75/month — became an incubator that eventually filled the downtown with businesses that graduated from the chalets.</p>
+
+        <p><strong>Northwest Arkansas was not exempt from critique.</strong> Marohn's direct warning to the Fayetteville audience: "If you want to see a preview of coming attractions for this region, look at Texas. If you want to see a preview for Texas, look at California. You're just a couple of decades behind them." He cited the Finance Decoder's finding that nearly every city modeled shows a deteriorating net financial position — with only one exception in the US being in Arkansas. NWA is growing. Growing doesn't mean healthy. South Bend was growing until it wasn't.</p>
+
+        <div class="pull" style="margin-top:20px;">
+          <p>"We have to stop building with empty calories, stop chasing the sugar high, and actually make investments that have a real payoff. The only way to fix a productivity problem is to increase your productivity."</p>
+          <cite>Chuck Marohn · Strong Towns 101</cite>
+        </div>
+        <div style="margin-top:16px;"><a href="https://otter.ai/u/C_brnwxtkocMR0qnn0irC0TtKL4" target="_blank" style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-f);border-color:var(--sage-mid);">Transcript on Otter →</a></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.12em;flex-shrink:0;">Day 1 · Afternoon</span>
+            <span class="summary-title">The physical environment makes community easy or hard — most American neighborhoods make it hard</span>
+          </div>
+          <div class="summary-sub" style="margin-left:100px;">Actually, Community Is Pretty Easy · John (The Happy Urbanist), Chattanooga · 1h 17m · Attended by Kyle, Julie, Bob</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>John opened with a story about his neighbor struggling to tear down a brick wall. He couldn't make it that day, so he sent a video to the neighborhood dad group making fun of the neighbor's technique. Somebody said "why don't we all come after work, grab beer, take turns at it?" In 45 minutes the wall was in trash cans. Community didn't require planning or programming. It required a broken wall, a video, and a neighborhood group chat. The problem isn't that people don't want community. It's that the built environment makes the things that produce it inaccessible.</p>
+
+        <p><strong>Three barriers:</strong> imagination (people can't picture a world where connection is normal), process (systems and codes that block good things from happening), and physical (the actual design of streets and buildings that separates people).</p>
+
+        <p><strong>On the imagination barrier:</strong> Barcelona. John watched parents walk their kids to school, drop them off at a plaza on the way home, sit at the outdoor café with a beer or a laptop, and let kids play with the same kids they saw daily. No arranged playdate. No calendar scheduling. The plaza provided proximity, frequency, and the conditions for compatibility and eventually commitment — the four seeds of friendship. The European plaza doesn't require heroism. The American suburb requires it.</p>
+
+        <p><strong>Donald Appleyard's study</strong> of three nearly identical San Francisco streets with heavy, medium, and light traffic: on the heavy-traffic street, residents had fewer relationships with neighbors and barely knew who lived on their block. On the light-traffic street, people had relationships that extended to the middle of the street. Same neighborhood, same demographics, one variable: traffic volume. The physical environment determined who knew each other.</p>
+
+        <p><strong>Building benches in Chattanooga.</strong> John and his group started building Leopold benches ($50 in materials, open-source design) from dumpster lumber. They held painting parties at the library where kids painted the bench backs. The kids went home and told their parents they'd helped build a bench. The parents came to see it. Now those parents call if a bench gets damaged, because they feel ownership over it. The bench isn't the point. The 80 people who feel responsible for the bench are the point.</p>
+
+        <p><strong>East Buffalo.</strong> A friend named Chris bought a building with apartments, a house next door, and a commercial ground floor — all for $40,000. He started a Socialist-themed bar, raised money from members, and started using the money to plant trees on a vacant lot next to his building. The city showed up and said the lot wasn't a park, stop planting trees. Chris kept planting. He got volunteers watering trees four hours a week. He organized photo ops with an interim mayor. He named the future park after a former mayor and invited the mayor's family to a press conference. Eventually the city said fine, it's a future park. The development plan for the surrounding blocks now shows townhouses with ground-floor neighborhood commercial. He's influencing a future mixed-use neighborhood while a city employee tells him stop planting trees.</p>
+
+        <p><strong>The Chattanooga street project.</strong> John received a $25,000 placemaking grant to slow down a street near three schools. He found an obscure form called the Transformation of Public Space Form — originally created for public art donations, repurposed during COVID for restaurant parklets. When he filed it, the city couldn't find it in their system. Nobody in the office had ever processed one. He got city council help, navigated public works, and eventually got approval by scheduling the installation as a block party (which already had a process for closing streets). The result: tactical daylighting — flexible delineators at intersections, solid-color painted crosswalks, visual narrowing that slows cars at the dangerous spots rather than the middle of the block. Installed at 9pm the night before leaving for CNU 34.</p>
+
+        <p>The advice John got from Nashville: when asked how to close the street, don't describe the project. Schedule a block party. The process for a block party already exists. You're just doing a block party that happens to involve painted crosswalks.</p>
+
+        <p><strong>Popsicles on the porch.</strong> John and his wife had moved in during COVID and never met their neighbors. Someone suggested popsicles. He put them in a cooler, advertised on the neighborhood app, and 40 people showed up the first night. They did it six times that summer. Now they don't pay for babysitters: neighbors watch each other's kids. He can borrow a propane tank. He has eggs when he needs eggs. "The popsicles are why I can say community is easy." Not easy to set up — but once you have five good neighbors, life becomes materially easier in ways you didn't anticipate.</p>
+
+        <p><strong>For LP:</strong> John's framing — hardware as the physical environment, software as the practices and social habits — directly echoes the Day 4 CNU Software of Community session. His advice: if you can't change the hardware quickly, change the software. Start small, consistently, with things that let people show up. Pilot before you invest. The Chattanooga street is better evidence for the next intersection than any rendering or study.</p>
+        <div style="margin-top:16px;"><a href="https://otter.ai/u/d_dEJSWIzwqYXcPyRpXmdD9cxUo" target="_blank" style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-f);border-color:var(--sage-mid);">Transcript on Otter →</a></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.12em;flex-shrink:0;">Day 2 · Morning</span>
+            <span class="summary-title">Parking minimums were made up in 1954 — Austin went from $0 to $1.9M in revenue by eliminating them</span>
+          </div>
+          <div class="summary-sub" style="margin-left:100px;">Curbs, Cash, and Community: Parking Reform That Pays · Tony (Parking Reform Network) + Curtis Rogers (City of Austin) + Fayetteville Local Conversation · 1h 12m · Attended by Kyle, Bob, Chad</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>The session opened with a direct admission about the origin of parking minimums. A 1954 Planning Advisory Service document states that "it is doubtful that any of the planners or architects could agree on the number of square feet of parking required for a shopping center" and that the rule of thumb was to guess and "invariably it's either too many or not enough." That guess was codified. It has been copied and adapted across every American municipality since, without evidence.</p>
+        <p>One survey of the capital region of Connecticut found parking requirements for a bowling alley ranging from 2 spaces per lane to 8 per lane across cities 20 miles apart. The same land use, requirements that vary by a factor of four, no analytical basis for any of them.</p>
+
+        <p><strong>The Austin case study:</strong> Curtis Rogers from the City of Austin described the South Congress corridor implementation. In 2022, Austin was generating $0 in parking revenue from the area — all parking was free, which meant there was no budget for enforcement, which meant employees parked all day in front of shops. In 2025: $1.9 million in revenue, with $726,000 transferred into the parking benefit district fund, most of which went to sidewalk improvements. The South Congress implementation used a hybrid model — paid parking during peak hours, resident permits that also work during paid hours — and converted almost entirely to mobile payment (75%+ of revenue coming through the app by fiscal year 2026).</p>
+
+        <p><strong>The math on any main street:</strong> Tony from the Parking Reform Network ran through the calculation live. Ten on-street spaces, $2/hour, 8 hours/day, 312 days, 50% average occupancy, 20% out for administration and enforcement: $20,000/year from 10 parking spaces. The town square in Denton, Texas has 160 stalls charging $0/hour. Potential: $320,000/year. Woodstock, Illinois — "most photographed town square in America" — 150 stalls, $0/hour, $300,000/year of uncaptured revenue lying on the ground.</p>
+
+        <p><strong>The Fayetteville local story.</strong> The Fayetteville Strong Towns local conversation group built the "Rethink the Lot" installation for this gathering — a full-scale demonstration of a studio apartment and one-bedroom apartment occupying the same footprint as their parking spaces. The panels were built over several evenings in the driveway at Kyle's house. Construction ran past 1am the night before opening. The group has done this two years running, getting media coverage including NPR, city council visits, and their mayor spending 30 minutes at the installation.</p>
+        <p>The Fayetteville parking history is its own cautionary tale: the city was a national leader in parking reform in 2015, passing by-right reductions to residential parking requirements. In 2025, responding to development pressure, the city reversed most of those reductions. The Powerhouse Building — a 1902 substation that had been a restaurant and could have been adaptively reused — was demolished in January to provide parking for a new student housing development. A city council member had said on record in September that "no one is going to tear down a building to build a parking lot." He was one of the votes that demolished it four months later.</p>
+
+        <p><strong>For LP:</strong> Trillium's village center should not build more parking than actual demand requires. Start with on-street parking on both sides of every commercial street, managed through pricing if demand warrants it, shared arrangements between uses with different peak hours. Don't build structured parking until there's demonstrated demand. The Fayetteville story shows that parking reform can be reversed by politics — the physical design of the street matters more than any policy, because physical design doesn't get reversed at a council meeting.</p>
+        <div style="margin-top:16px;"><a href="https://otter.ai/u/BdybLfhkXNRHOtos4YeRAYqA9iI" target="_blank" style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-f);border-color:var(--sage-mid);">Transcript on Otter →</a></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.12em;flex-shrink:0;">Day 2 · Main</div>
+            <span class="summary-title">Tax value per acre makes the case — and Urban3 already ran the NWA numbers</span>
+          </div>
+          <div class="summary-sub" style="margin-left:100px;">How Doing the Math Can Make the Case for Stronger Towns · Joe Minicozzi, Urban3 · 1h 27m · Attended by Kyle, Bob</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Joe Minicozzi (Urban3, Asheville) described his firm's work as geo-accounting: take the value per acre, the revenue per acre, the cost per acre, put it on a map, and let the community see its financial reality spatially. The math involved is fifth-grade division. The effect is a city council looking at a map of their own community and understanding something they couldn't see in a spreadsheet.</p>
+
+        <p><strong>Asheville.</strong> Joe worked with a developer named Julian Price who ran Public Interest Projects — 75% of investment into buildings, 25% into starting businesses. The city put roughly $35,000 in streetscape improvements into one block. Price's team took the taxable value from $300,000 to $11 million. The city was accused of subsidizing him. "That's a 3,500% increase in taxes. Y'all have a 401k plan that grows by 3,500%? We'd like that." The argument against density always uses gross numbers. The answer is per acre: 34 acres for a Walmart at $20M total value vs. point-2 acres for the rehab building at $11M total value. The Walmart produces 100 times less property tax per acre.</p>
+
+        <p><strong>The Walmart business model, directly from Walmart.</strong> Joe attended an assessors' conference where a Walmart representative was the keynote speaker — explaining to 3,000 assessors how to lower the taxable value of Walmart buildings. The representative said directly: "We designed the building to depreciate as much as possible. We'll build another building and depreciate it down again. The buildings are throw-away for us." Their commitment to the community: 15-20 years. That's the useful life of a cat, Minicozzi said. Is this the investment you want in your community?</p>
+
+        <p><strong>Northwest Arkansas — the numbers are already done.</strong> Urban3 analyzed NWA specifically and presented the results at this gathering. A few direct findings:</p>
+        <ul style="margin:12px 0;padding-left:20px;font-size:14px;color:var(--ink-l);line-height:1.8;">
+          <li><strong>Rogers:</strong> Downtown Rogers (2 acres) produces $131,000/acre in sales taxes. Pleasant Crossing Commons (107 acres) produces $38,000/acre. The little buildings downtown are crushing the big-box strip on a per-acre basis.</li>
+          <li><strong>Centerton:</strong> "There's no center in Centerton." A uniform shag carpet of suburban development with almost no variation in productivity — and the most productive building in the community was a single residential property. "It's really sad, actually, to have a residential property be most productive."</li>
+          <li><strong>The regional infrastructure bill:</strong> NWA has about 4,400 miles of locally maintained roads. As a region, that's double the road miles per person compared to Luxembourg. Every 50 years, those roads come due for replacement. Was there a community meeting where NWA decided to build that much road? "That choice was made for you by your policies and how you allow things to grow."</li>
+        </ul>
+
+        <p><strong>The Springfield, Missouri tree story.</strong> Springfield's risk management director had banned trees from downtown because "they attack the streets and sidewalks." When Urban3 ran the stormwater analysis, they found: Springfield's trees were absorbing stormwater that would otherwise cost $2.2 million per year to manage through gray infrastructure. The trees were printing the city $2.2M/year. Planting one tree costs about $75/year to plant and maintain. One tree generates about $115/year in stormwater benefit. Net: +$40/tree/year. Plant 10,000 of them — you could fund four police officers with trees. Earl (the risk management director) eventually said, after seeing the analysis, "That's cool. I win." He had banned trees because he'd seen them damage sidewalks. He'd never been asked to measure what they were saving.</p>
+
+        <p><strong>South Bend.</strong> Population peaked in 1960. It's been declining ever since. But the lift stations went from 3 to 43 — a 1,000% increase — after the population stopped growing. Force mains went from 0.3 miles to 19 miles, a 6,500% increase. "I show this in places that are fast-growing and they think 'those people are stupid.' Do you think people sat around in South Bend in 1958 and said 'someday we're going to suck'? Humans are optimistic. For the places that grow, you have a hard time seeing your own death."</p>
+
+        <p><strong>For LP:</strong> The NWA analysis exists. Urban3 already knows what the numbers look like in this region. Commissioning an Urban3 analysis of Cave Springs specifically — comparing Trillium's development pattern against the conventional alternative on the same land — would produce a documented fiscal finding that LP could put in front of Cave Springs city council, the planning commission, and any skeptical elected official. It converts the walkability argument from design preference to fiscal evidence. Joe said he's presenting the local downtown analysis in person in July — that's an in-person contact opportunity.</p>
+        <div style="margin-top:16px;"><a href="https://otter.ai/u/693zbrIKTJ88HseKV3D2KgU6G50" target="_blank" style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-f);border-color:var(--sage-mid);">Transcript on Otter →</a></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.12em;flex-shrink:0;">Day 2 · Afternoon</span>
+            <span class="summary-title">A city's net financial position tells you what its budget never will — and it takes 45 minutes to calculate</span>
+          </div>
+          <div class="summary-sub" style="margin-left:100px;">Deciding Your Municipal Budget: The Finance Decoder · Norm + Mitch · 1h 16m · Attended by Kyle, Brenda, Bob</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <p>Norm opened with the Van Halen rider story. Van Halen was one of the first touring acts to require 18 semi-trucks of equipment — pyrotechnics, heavy rigging, complex electrical systems. Their contract rider was dozens of pages of technical requirements. Somewhere in the middle, the manager inserted: no brown M&Ms in the dressing room candy bowl. When he arrived at a venue, he'd glance in the dressing room. Brown M&Ms still there? He knew they hadn't read the rider carefully. Time to check every safety specification before the show. If they'd removed the brown M&Ms, they'd been thorough.</p>
+        <p>The Finance Decoder is the brown M&M test for cities. If a city hasn't looked at its net financial position trend line, it hasn't been reading its rider.</p>
+
+        <p><strong>The Elmwood Park problem.</strong> Mitch opened with a photo of his neighborhood park in Winnipeg from 1946 — a literal postcard image, perfect and manicured, because the park had a full-time gardener. They got rid of the gardener in the 1960s. Today the park is usable but rundown. The Arlington Bridge in Winnipeg closed for emergency repairs and never reopened. City pools are closing because repair costs are too high. The pattern is consistent: governments made decisions in the past that shifted costs into the future, and the future has arrived.</p>
+
+        <p><strong>The core concept:</strong> Capital dollars are operating dollars from another year. Everything the city spends on infrastructure comes from surpluses in its operating budget — either past surpluses (saved up) or future surpluses (borrowed). If a city's net financial position is declining, it means the city has been spending future surpluses to pay for today's infrastructure. Eventually those come due as service cuts, deferred maintenance, or tax increases. The Finance Decoder makes this trend visible from numbers that are already in the city's publicly available Annual Comprehensive Financial Report (ACFR).</p>
+
+        <p><strong>Winnipeg: -$1.2 billion net financial position.</strong> This is the accumulated result of decades of decisions where the city promised more service than it could sustain. "There's nothing we can do about past decisions. But we can at least know what's coming, and have the conversation now rather than after the sewer main breaks into the river."</p>
+
+        <p><strong>The three types of indicators:</strong></p>
+        <ul style="margin:12px 0;padding-left:20px;font-size:14px;color:var(--ink-l);line-height:1.8;">
+          <li><strong>Sustainability:</strong> Can we keep doing this forever? (Net financial position, net debt to total revenues, total assets to liabilities)</li>
+          <li><strong>Flexibility:</strong> If it's not sustainable, how adaptable are we? (Debt payments as proportion of revenues, infrastructure ratio — how much useful life is left in what we own)</li>
+          <li><strong>Vulnerability:</strong> How dependent are we on decisions made outside our control? (Federal and state aid as a proportion of budget — the more reliant on outside aid, the less control over local priorities)</li>
+        </ul>
+
+        <p><strong>The infrastructure ratio.</strong> Mitch's favorite indicator: book value of tangible capital assets divided by their original cost. It measures how much useful life remains in the city's infrastructure. When this trend line goes down despite record infrastructure investment, record inflation, and record growth (all factors that push it up) — the city is falling behind its infrastructure no matter how much it spends.</p>
+
+        <p><strong>The 87% number.</strong> In Canada, 87% of all municipal infrastructure is roads and pipes — water, sewer, land drainage, roads and bridges. Winnipeg is at 88%. The implication: even if you closed all the libraries, got rid of all the fire trucks, eliminated every bus, sold City Hall — that's only 12% of the infrastructure. The problem is in the roads and pipes. It is literally a question of where you put stuff and how you travel between it.</p>
+
+        <p><strong>How to use it:</strong> Download the Finance Decoder (strongtowns.org/decoder-resources, or go directly to the decoder-resources page to skip the email signup). Make a copy in Google Sheets. Find your city's ACFR — most are on the city website or on a state aggregator. About 12 numbers to plug in. Norm, who has a philosophy degree, did this for San Antonio from his hotel room in 45 minutes. The graphs generate automatically. The conversation begins there.</p>
+
+        <p><strong>For LP:</strong> Run the Finance Decoder for Cave Springs before any major negotiation about infrastructure partnerships, annexation, or long-term maintenance commitments. If Cave Springs is on a deteriorating trajectory (likely — most cities are), LP needs to know what it's partnering with and how to frame the Trillium development pattern as genuinely better for the city's long-term financial position. If Cave Springs is an outlier with an improving position — which Marohn mentioned in Strong Towns 101 as the one Arkansas city that didn't fit the declining pattern — that's an even stronger case for the partnership. Either way, knowing is better than not knowing.</p>
+        <div style="margin-top:16px;"><a href="https://otter.ai/u/3bUQuoMmnGMsMwBKiwPXLSP69-c" target="_blank" style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-f);border-color:var(--sage-mid);">Transcript on Otter →</a></div>
+      </div>
+    </details>
+  </div>
+
+  <!-- LP APPLICATIONS -->
+  <div class="section">
+    <h2>What This Means for LP and Cave Springs</h2>
+
+    <details open>
+      <summary><div><div class="summary-title">Run the Finance Decoder for Cave Springs before the next infrastructure negotiation</div></div></summary>
+      <div class="detail-body">
+        <p>Download the Finance Decoder at strongtowns.org/decoder-resources. Pull Cave Springs' Annual Comprehensive Financial Report. Plug in roughly 12 numbers. The graph generates automatically. Norm did it for San Antonio in 45 minutes from his hotel room with a philosophy degree.</p>
+        <p>The result tells LP whether Cave Springs is a financially improving, stable, or deteriorating partner — which should inform every commitment LP makes or asks Cave Springs to make about infrastructure, long-term maintenance, or ongoing partnership. Marohn noted in his talk that only one Arkansas city in the Finance Decoder analysis showed an improving net financial position. If Cave Springs is that city, that's a remarkable finding worth knowing. If it's not, LP needs to understand the trajectory before structuring a 30-year partnership.</p>
+        <p>Consider sharing the analysis with Cave Springs city staff. Most municipal employees have never seen their own net financial position trend line. The conversation it opens is one Cave Springs needs to have regardless of Trillium.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Commission an Urban3 profit/loss analysis comparing Trillium to the conventional alternative</div></div></summary>
+      <div class="detail-body">
+        <p>Urban3 has already analyzed NWA and has the regional data. A focused analysis of Cave Springs — showing what the fiscal picture looks like under Trillium's development pattern versus what conventional suburban development on the same land would generate and cost — would produce documented evidence LP can put in front of city council, the planning commission, and skeptical elected officials.</p>
+        <p>Joe Minicozzi said he's presenting the local downtown analysis in person in Fayetteville in July. That's the entry point. Contact through strongtowns.org or directly from the conference connection.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Trillium's compact development pattern is LP's most persuasive long-term argument to Cave Springs</div></div></summary>
+      <div class="detail-body">
+        <p>The NWA numbers are specific: Downtown Rogers (2 acres) generates $131,000/acre in sales taxes. Pleasant Crossing Commons (107 acres) generates $38,000/acre. The old "blighted" block in Brainerd paid 78% more in taxes than the Taco John's that replaced it. Every city Urban3 has modeled shows the same pattern.</p>
+        <p>LP should be making this argument explicitly in every conversation with Cave Springs where development density, street width, or product mix is being negotiated. Trillium's compact, walkable development pattern will generate more revenue per acre than the conventional alternative and will require less per-unit infrastructure maintenance cost over the next 50 years. That's not a design preference — it's the fiscal foundation of the partnership. The Urban3 analysis would give LP specific numbers for Cave Springs specifically.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><div><div class="summary-title">Pilot the village center before committing capital — it produces better decisions and community investment simultaneously</div></div></summary>
+      <div class="detail-body">
+        <p>John's Chattanooga street work, Marohn's Broad Avenue example, and the Muskegon chalets all point to the same principle: a weekend pop-up or a temporary installation tells you more about what will work than any rendering or market study. When it works, the community has experienced it and wants more. When it doesn't work, you've lost some paint and a few cones, not a permanent structure.</p>
+        <p>Trillium's village center activation strategy should include an explicit pilot phase before permanent infrastructure is designed: temporary markets, pop-up single-crew businesses, weekend events that test demand. This isn't cutting corners. It's the risk management approach that the strongest practitioners in both the CNU and Strong Towns communities have independently converged on.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="section">
+    <h2>Strong Towns Resources</h2>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Strong Towns Finance Decoder</strong> Free spreadsheet at strongtowns.org/decoder-resources (direct link — no email signup). Requires the city's Annual Comprehensive Financial Report (ACFR). Generates net financial position trend and related sustainability, flexibility, and vulnerability indicators.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Urban3</strong> Joe Minicozzi's Asheville-based firm. Produces tax value per acre maps and profit/loss analyses for cities. Has already analyzed NWA regionally. Presenting in Fayetteville in July. Contact through strongtowns.org.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>You'll Pay for This: How We Can Afford a City for Everyone, Forever</strong> Mitch's book. Short, accessible — designed to be shared with council members. Sixth-grade reading level. Available wherever books are sold.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Sam Quinones: Dreamland and The Least of Us</strong> The opioid epidemic books that are ultimately about community shredding and community resilience. The tuba book (<em>The Least of Us</em>) is the most LP-relevant: how small commitments and physical gathering places create the social fabric that makes communities resilient.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>Better Block Foundation</strong> Dallas-based organization running temporary demonstration projects showing what streets and blocks can be. betterblock.org. Referenced by Marohn as the implementation partner for the Broad Avenue approach.</div>
+    </div>
+    <div class="check-item" style="border-bottom:none;">
+      <div class="check-box"></div>
+      <div class="check-body"><strong>The Happy Urbanist (Substack)</strong> John's content — free, all of it. Urban planning made accessible for non-planners. "My goal isn't to make content that urbanists like. It's to make good people see a better way forward." The bench designs, the process stories, the legal strategies for navigating hostile city hall processes.</div>
+    </div>
+  </div>
+
+<div class="footer">
+  <span>LP · Strong Towns 2026 · Bonus Section</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>

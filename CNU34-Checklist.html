@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trillium Checklist · CNU 34</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  :root {
+    --deep:    #0E2318;
+    --mid:     #1B5438;
+    --light:   #2E7D4F;
+    --amber:   #C85A1A;
+    --sky:     #1E5C8C;
+    --sage:    #E3EFE6;
+    --sage-mid:#C5D5BE;
+    --cream:   #F6F9F3;
+    --ink:     #1A1714;
+    --ink-l:   #4A4540;
+    --ink-f:   #8A837A;
+    --pale:    #EAF3EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Brand band */
+  .brand {
+    background: var(--deep);
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 120px,rgba(255,255,255,.018) 120px,rgba(255,255,255,.018) 121px);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--light), var(--sky));
+  }
+  .brand-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 48px 18px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;
+  }
+  .brand-id {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; color: rgba(255,255,255,.45); text-transform: uppercase;
+  }
+  .brand-num {
+    font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -1px; margin: 0 16px;
+  }
+  .brand-loc {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 300;
+    letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase;
+    align-self: center;
+  }
+  .brand-meta {
+    font-size: 11px; color: rgba(255,255,255,.3); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; text-align: right;
+  }
+
+  /* Page */
+  .page { max-width: 900px; margin: 0 auto; padding: 52px 48px 72px; }
+
+  /* Typography */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 32px;
+    font-weight: 600; letter-spacing: -.5px; line-height: 1.15;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 22px;
+    font-weight: 600; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--sage-mid);
+  }
+  h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 10px;
+  }
+  p { color: var(--ink-l); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--light); text-decoration: none; border-bottom: 1px solid var(--sage-mid); }
+  a:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* Sections */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  /* Expandable details */
+  details { margin-bottom: 2px; }
+  details + details { border-top: 1px solid var(--sage-mid); }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    background: white; display: flex; align-items: baseline; gap: 14px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '+'; font-family: 'Oswald', sans-serif; font-weight: 700;
+    color: var(--amber); font-size: 16px; flex-shrink: 0; transition: transform .2s;
+  }
+  details[open] summary::before { content: '−'; }
+  .summary-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-weight: 600; color: var(--ink);
+  }
+  .summary-sub { font-size: 13px; color: var(--ink-f); margin-top: 2px; }
+  .detail-body { padding: 0 20px 20px 52px; background: white; border-top: 1px solid var(--sage); }
+
+  /* Data callouts */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 20px 0;
+  }
+  .stat-card { background: var(--sage); padding: 18px 16px; }
+  .stat-val {
+    font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--mid); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.sky { color: var(--sky); }
+  .stat-desc { font-size: 12px; color: var(--ink-f); line-height: 1.4; }
+
+  /* Nav grid */
+  .nav-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0;
+  }
+  .nav-card {
+    background: white; border: 1px solid var(--sage-mid); padding: 20px 18px;
+    text-decoration: none; border-bottom: none; display: block;
+    transition: background .15s;
+  }
+  .nav-card:hover { background: var(--pale); border-color: var(--sage-mid); }
+  .nav-card-num {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
+    color: var(--amber); letter-spacing: .15em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-card-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 15px;
+    font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 6px;
+  }
+  .nav-card-desc { font-size: 12px; color: var(--ink-f); line-height: 1.45; }
+
+  /* Pull quote */
+  .pull {
+    border-left: 4px solid var(--amber); padding: 16px 20px;
+    margin: 28px 0; background: var(--pale);
+  }
+  .pull p {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 17px;
+    font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 8px;
+  }
+  .pull cite {
+    font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--ink-f);
+    letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  }
+
+  /* Checklist */
+  .check-item {
+    padding: 12px 0; border-bottom: 1px solid var(--sage-mid);
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    align-items: start; font-size: 14.5px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 2px solid var(--sage-mid);
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .check-body { color: var(--ink-l); line-height: 1.55; }
+  .check-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+  .check-ref { font-size: 11.5px; color: var(--amber); font-family: 'Oswald', sans-serif;
+    letter-spacing: .08em; margin-top: 3px; }
+
+  /* Findings list */
+  .finding {
+    display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+    padding: 16px 0; border-bottom: 1px solid var(--sage-mid); align-items: start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-num {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--sage-mid); line-height: 1.1;
+  }
+  .finding-body { font-size: 15px; color: var(--ink-l); line-height: 1.6; }
+  .finding-body strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--sage-mid); padding-top: 20px;
+    font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-f);
+    letter-spacing: .08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    margin-top: 60px;
+  }
+
+  /* Back link */
+  .back {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--light);
+    text-decoration: none; border-bottom: 1px solid var(--sage-mid);
+    display: inline-block; margin-bottom: 36px; padding-bottom: 1px;
+  }
+  .back:hover { color: var(--amber); border-color: var(--amber); }
+
+  @media (max-width:660px) {
+    .page { padding: 32px 24px; }
+    .brand-inner { padding: 16px 24px; }
+    .nav-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    .brand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 13px; }
+    details { display: block; }
+    details[open] .detail-body, .detail-body { display: block; }
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">SXXKV5UFM55W-1413989332-27053</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">eb7ae0a0-40d9-4822-97de-7f10a89fe346</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://lptulsa.sharepoint.com/sites/development/_layouts/15/DocIdRedir.aspx?ID=SXXKV5UFM55W-1413989332-27053, SXXKV5UFM55W-1413989332-27053</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="brand">
+  <div class="brand-inner">
+    <div style="display:flex;align-items:baseline;gap:0;">
+      <span class="brand-id">CNU</span>
+      <span class="brand-num">34</span>
+      <span style="width:1px;height:28px;background:rgba(255,255,255,.2);margin-right:16px;align-self:center;"></span>
+      <span class="brand-loc">Northwest Arkansas</span>
+    </div>
+    <div class="brand-meta">Leadership Properties &nbsp;·&nbsp; May 2026</div>
+  </div>
+</div>
+<div class="page">
+
+  <a class="back" href="CNU34-Guide.html">← Back to Guide</a>
+  <div class="section-label">Section 05</div>
+  <h1>Trillium Checklist</h1>
+  <p>Organized by urgency, then by theme within each tier. Session codes in amber indicate where the item originated — full detail is in the <a href="CNU34-Sessions.html">session archive</a>.</p>
+  <p style="font-size:13px;color:var(--ink-f);margin-top:6px;">Print this page: items expand flat for printing.</p>
+
+  <!-- TIER 1 -->
+  <div class="section">
+    <h2>Before Phase 1 Design Is Locked</h2>
+    <p style="font-size:14px;color:var(--ink-f);margin-bottom:20px;">These items, if left unresolved, will constrain Phase 1 design decisions or require expensive redesign later.</p>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Design &amp; Architecture</div>
+          <div class="summary-sub">Site plan, building types, street sections, village center</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Does Phase 1 pass the fractal test?</strong>
+            A complete slice through all Trillium product types — not the easiest products in the easiest corner. If Phase 1 was all that ever got built, would it feel like a place?
+            <div class="check-ref">D1·S1 · D1·S5 · D1·S6</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Designate the "first perfect block"</strong>
+            Which specific block or street becomes Trillium's LoDo — the smallest spot where all four walkability conditions are met before anything else opens? This is the gravity field that everything else radiates from.
+            <div class="check-ref">D2·S3 · D1·S6</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Confirm village center starts one-story</strong>
+            Multi-story mixed-use masonry in Phase 1 is designing the end state before the market can support it. Rosemary Beach, Seaside, every comparable community started one-story and grew. The one-story building with the right street relationship is the infant; the multi-story block is the adult it grows into.
+            <div class="check-ref">D3·S4 · D1·S3</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Commit to 3/4/5 story position for multifamily</strong>
+            3 is the architectural sweet spot for Cave Springs' current scale. 4 is the practical planning ceiling. 5 requires multi-year fire department engagement before it's a realistic planning assumption. Decide before the pro forma makes this decision by default.
+            <div class="check-ref">D3·S1 · D3·S8</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Design street trees before finalizing utility cross-sections</strong>
+            Tree root volumes extend under the sidewalk. If utilities are positioned without accounting for this, there often isn't room for trees afterward. Street trees at ~$500 each add approximately $112,000 per tree in measured home value. Sequence: tree placement first, utilities second.
+            <div class="check-ref">D3·S6 · D2·S3</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Verify street sections: 10-ft lanes, 2-way, on-street parking throughout</strong>
+            Are Trillium's internal commercial streets specified to NACTO standard? 10-foot through lanes, two-way traffic everywhere, on-street parking on both sides of every commercial street, no center lines on residential streets. These are financial decisions with measurable downstream effects, not aesthetic preferences.
+            <div class="check-ref">D2·S3 · D2·S1</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Include cottage and townhouse standards in design code from day one</strong>
+            Kentlands omitted these and those lot types underperformed until the 2023 code update retrofitted the guidance. If Trillium has these product types planned, write the standards now.
+            <div class="check-ref">D3·S3</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Design single-stair buildings to 4-story standard even if building to 3</strong>
+            Maximum 4,000 sqft floor plate, 4-6 units/floor, all units within 20 feet of stair. Designing to this standard now keeps the 4-story option open as the Cave Springs relationship develops, without requiring redesign.
+            <div class="check-ref">D3·S1</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Calculate Trillium's planned intersection density</strong>
+            Intersections per square mile at current design, and at target build-out. Compare to 150 (LEED baseline), 355 (Westminster CO achievement), and the connected-streets fire access standard. This single number connects walkability, traffic safety, and emergency access in a form useful for Cave Springs conversations.
+            <div class="check-ref">D3·S7 · D3·S8</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Run three civil engineering analyses before builder conversations begin</strong>
+            (1) Alley/rear-loading vs. front-loaded total paved area at Trillium's specific lot dimensions — rear-loading often produces less total impervious surface. (2) Utilities under sidewalk vs. under pavement cost comparison for Trillium's T-zones. (3) Intersection density calculation above.
+            <div class="check-ref">D3·S5 · D3·S6 · D3·S7</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Governance &amp; Control</div>
+          <div class="summary-sub">Town architect, design code, founding documents</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Engage town architect — before the first builder submits a plan</strong>
+            Not after. The Lakeland comparison documents what happens without one over 20 years: same master plan quality, dramatically inferior result. Establish the role now. Principle-based review, not taste-based.
+            <div class="check-ref">D3·S3 · D1·S5</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Write Trillium's 12-pattern summary</strong>
+            LP should be able to describe Trillium Village in approximately 12 design-intention patterns (not marketing language, not code language). If LP can't list these, the design vision hasn't been articulated at the right level of precision. See Pattern Writing session notes for the methodology.
+            <div class="check-ref">D3·S5</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Write the founding vision document</strong>
+            The equivalent of Steve Mouzon's "Declaration of Independence from Sprawl" — a written statement of why Trillium is being built the way it is, separate from and more durable than the design code. When LP's leadership eventually transitions, when a new HOA board takes over, or when a new Cave Springs council member questions a standard, this document is what answers. It doesn't exist yet.
+            <div class="check-ref">D3·S3 · D3·S4</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Build "out of balance" mechanism into design code explicitly</strong>
+            Even permitted, previously-approved patterns can be overused. The town architect needs documented authority to restrict any pattern temporarily — including ones that have been approved before. This authority will not be assumed; it must be written in.
+            <div class="check-ref">D3·S3</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Build entitlement flexibility in from day one</strong>
+            The projects that survived 2008 had entitlements flexible enough to pivot product type and density as conditions changed. A rigid single-vision entitlement becomes impossible to execute when market conditions shift. Library of solutions within guardrails, not a prescribed end state.
+            <div class="check-ref">D3·S4</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Get more entitlements than planned</strong>
+            New Town St. Charles approved significantly more units than they expected to build — insurance against changing market conditions, regulatory shifts, and the opportunity to evolve the plan over a 20-30 year build-out.
+            <div class="check-ref">D3·S3 · D3·S4</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Fire &amp; Safety</div>
+          <div class="summary-sub">Cave Springs fire department engagement, building specifications</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Initiate Cave Springs fire department relationship — now</strong>
+            Monthly meetings. Non-crisis, non-complaint-driven. The Fayetteville model (Britt Bostic + Carl Keller) took two years to build and produced code changes and council wins. LP needs to start earlier in the process. The specific question to bring: "What would you need to see to be comfortable with [specific building type or street width]?"
+            <div class="check-ref">D3·S8</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Ask Cave Springs FD to create a written equipment replacement plan</strong>
+            Prioritizing more maneuverable apparatus (rear-mount pumpers or re-engineered vehicles) as existing equipment ages out over 10-15 years. This is not asking them to change safety standards — it's asking them to plan fleet acquisitions for the streets they're designing for. A department with this plan on paper can accept narrower streets. A department without it can't.
+            <div class="check-ref">D3·S8</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Specify NFPA 13 full system for all multifamily buildings</strong>
+            Not 13D (lets people escape but doesn't protect the person in the burning room). Not 13R (residential light version with coverage gaps). NFPA 13. Lead with this commitment in every regulatory conversation — it converts skeptical fire officials into advocates.
+            <div class="check-ref">D3·S8 · D3·S1</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Specify self-closing unit and corridor doors in all multifamily</strong>
+            The "unsung hero of fire safety" — multiple sessions identified this as the single highest-impact fire safety intervention most commonly skipped. Netherlands research: buildings with self-closing doors have rescue rates comparable to multi-stair buildings. Costs almost nothing at the specification stage; very difficult to add after construction.
+            <div class="check-ref">D3·S1 · D3·S8</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Finance &amp; Deal Structure</div>
+          <div class="summary-sub">Investor alignment, leverage, asset retention</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Audit investor partners for 7-year fund timeline exposure</strong>
+            Institutional fund structures mandate exit in 7 years — structurally incompatible with 20-30 year new urban development. If any LP investor partners are on a fund timeline that creates pressure to exit before Trillium is complete, this needs to be resolved before it becomes a crisis. The Lessons of Failure panel identified this as one of the movement's most consistent structural problems.
+            <div class="check-ref">D3·S4</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Determine the retail exit strategy for the village center</strong>
+            Bob Fields' first question to any developer: is this retail a profit center (to sell to an institutional fund), an amenity (to increase housing values), or a legacy (to do good for the community)? These lead to completely different designs, financing structures, and management expectations. The answer should drive every commercial design, leasing, and management decision downstream.
+            <div class="check-ref">D1·S3</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- TIER 2 -->
+  <div class="section">
+    <h2>Before the First Builder Arrives</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Builder Relations &amp; Quality Control</div>
+          <div class="summary-sub">Builder selection, workshops, error prevention</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Establish builder selection and lot release process</strong>
+            Norton Commons released lots only to vetted builders, in batches of 25-30 to preserve scarcity. What is LP's equivalent? Who vets builders, on what criteria, and how are lots sequenced to prevent "missing teeth" in the street wall?
+            <div class="check-ref">D1·S2</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Visit New Town St. Charles before finalizing builder standards</strong>
+            Greg Whitaker (town architect) has solved the economy-of-means problem: simple, repeatable, economical traditional architecture at production scale. Frank Starkey's direct recommendation to developers seeking a reference. See it before writing the code.
+            <div class="check-ref">D3·S3 · D3·S4</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Set up builder workshop program</strong>
+            Show builders how to execute requirements with skilled craftspeople present — rather than just specifying what's required. Many traditional construction techniques haven't been practiced in NWA in decades. Showing is more effective than specifying. The builder who says "I can do that" after seeing it done is worth more than a builder who signs the covenant reluctantly.
+            <div class="check-ref">D3·S3</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Plan error prevention site walks</strong>
+            Walking active construction sites explicitly to say what will have to be torn out before it goes further. Creates accountability before problems compound. Establish this as a standard protocol, not an exception.
+            <div class="check-ref">D3·S3</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Governance Structure</div>
+          <div class="summary-sub">HOA design, design review process</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Design HOA governance structure before first residents arrive</strong>
+            The Kentlands Historic Trust model: resident body including architects, super-majority required to overrule town architect recommendation. Design this before the first closing, not after the first HOA dispute. HOAs wired only to maintain minimum assessments will erode design quality predictably.
+            <div class="check-ref">D3·S3</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Contact Bob Fields for free village center review</strong>
+            Bob Fields offered at CNU to review the Trillium village center concept at no charge. He specifically asked what LP's retail exit strategy is — have that answer ready before reaching out.
+            <div class="check-ref">D1·S3</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- TIER 3 -->
+  <div class="section">
+    <h2>Before the First Closing</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Community Foundation</div>
+          <div class="summary-sub">Charter, programming, maintenance</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Write and deploy a community charter for buyers</strong>
+            The Kentlands model: not a legal document, but a written statement of what Trillium is and why it was built the way it was. Buyers read it before closing. This creates a moment of informed consent and shapes who selects in. Communities that skip this tend to experience first-generation/second-generation buyer value conflicts earlier and more disruptively.
+            <div class="check-ref">D3·S3 · D3·S4 · D4·S1</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Budget the village center host role as a position</strong>
+            Not security, not a concierge. A person whose job is to greet everyone, model "Hi neighbor," pick things up, and intervene quietly in tension. Memphis River Parks found this role cost less than security and produced measurably better social outcomes. Budget it before the first business opens, not after the first incident.
+            <div class="check-ref">D3·S2</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Establish public space maintenance reserve as a formula, not a line item</strong>
+            Multiple sessions from different angles: neglected public spaces destroy civic trust worse than if they'd never been built. Set the formula at construction as a fixed percentage of project cost. Not discretionary. Not renegotiated annually.
+            <div class="check-ref">D3·S2 · D3·S3 · D4·CK</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Identify and plan the first tradition-founding event</strong>
+            What is Trillium's Supermarket Derby? The event that runs for 25 years, becomes part of the community's identity, and creates the story that makes it feel like a hometown rather than a development. Someone has to initiate this before the community can sustain it. Plan it before Phase 1 opens.
+            <div class="check-ref">D4·S1</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- TIER 4 -->
+  <div class="section">
+    <h2>Ongoing / Strategic Horizon</h2>
+
+    <details open>
+      <summary>
+        <div>
+          <div class="summary-title">Research &amp; Data</div>
+          <div class="summary-sub">Market research, health data, economic opportunity</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Pull Cave Springs census tract data from opportunityatlas.org</strong>
+            Chetty's team has published economic mobility data for every US census tract. Know Trillium's current score before any investor or entitlement conversation where community impact is discussed.
+            <div class="check-ref">D2·CK</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Obtain the Surgeon General's 2023 advisory on community health</strong>
+            The institutional public health validation of walkable community design. Belongs in LP's investor deck alongside Chetty's economic data. Available at hhs.gov.
+            <div class="check-ref">D1·S9</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Resolve NWA household data internally</strong>
+            The 62% one-and-two-person household figure is from NWA census data, but there is internal LP disagreement about whether it's the right baseline for Cave Springs specifically. Pull census tract-level data for Cave Springs and let it anchor the product mix conversation going forward.
+            <div class="check-ref">D1·S4 · D2·CK</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Obtain NYU/Gale social infrastructure report</strong>
+            Published just before CNU 34. Contains the 80%+ belonging finding and cross-class relationship data from public space use research. Useful in investor, entitlement, and city conversations. Search: "Gale + Institute for Public Knowledge + NYU + social infrastructure."
+            <div class="check-ref">D4·CK</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <div>
+          <div class="summary-title">Relationships &amp; Partnerships</div>
+          <div class="summary-sub">Key conversations to initiate</div>
+        </div>
+      </summary>
+      <div class="detail-body">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Explore Cave Springs stormwater partnership</strong>
+            If Cave Springs or Benton County has EPA stormwater compliance obligations (most growing Arkansas municipalities do), the Boise license agreement model may apply: LP-funded right-of-way stormwater infrastructure in exchange for regulatory flexibility on lot-level easement requirements. Initiate conversation with Cave Springs city engineer.
+            <div class="check-ref">D3·S6 · D4·CK</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Get utility engineers on site early</strong>
+            Both the Rogers theater story and the Boise bioswale story resolved through on-site relationships — not through arguing from drawings. Initiate site meetings with electric, water, gas, and stormwater utility engineers during design, before conflicts become entrenched positions.
+            <div class="check-ref">D3·S6</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Explore Thaden School / Walton Foundation relationship</strong>
+            Thaden's mission (diversity as pedagogy, collision density by design, sliding-scale access) and LP's community-building mission are the same argument in different vocabularies. A satellite program, reserved parcel, or enrollment pathway for Trillium families is worth an exploratory conversation.
+            <div class="check-ref">D3·T1 · D1·S1</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-body">
+            <strong>Consider Zimmerman Vogue for NWA market study</strong>
+            Recommended at CNU for markets where new urban product types don't yet exist in the local data. Conventional market analysts work from rear-view data. Zimmerman Vogue's void analysis methodology identifies latent demand for product types that aren't yet being supplied.
+            <div class="check-ref">D1·S5</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+<div class="footer">
+  <span>LP · CNU 34 · Section 05</span>
+  <span>Northwest Arkansas · Trillium Village</span>
+</div>
+</div>
+</body>
+</html>
